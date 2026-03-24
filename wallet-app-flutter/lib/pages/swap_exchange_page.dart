@@ -21,6 +21,26 @@ class _SwapExchangePageState extends State<SwapExchangePage> {
   int _mode = 0;
   final TextEditingController _toAmountController = TextEditingController(text: '0');
 
+  static const _allTokens = ['SOL', 'ETH', 'USDC', 'USDT'];
+
+  void _setFromAsset(String v) {
+    setState(() {
+      if (v == _toAsset) {
+        _toAsset = _fromAsset;
+      }
+      _fromAsset = v;
+    });
+  }
+
+  void _setToAsset(String v) {
+    setState(() {
+      if (v == _fromAsset) {
+        _fromAsset = _toAsset;
+      }
+      _toAsset = v;
+    });
+  }
+
   @override
   void dispose() {
     _amountController.dispose();
@@ -99,8 +119,8 @@ class _SwapExchangePageState extends State<SwapExchangePage> {
                   balanceLabel: '余额: 0.0 SOL',
                   amountController: _amountController,
                   token: _fromAsset,
-                  tokens: const ['SOL', 'ETH', 'USDC'],
-                  onTokenChanged: (v) => setState(() => _fromAsset = v),
+                  tokens: _allTokens,
+                  onTokenChanged: _setFromAsset,
                   chips: const ['25%', '50%'],
                 ),
                 const SizedBox(height: 12),
@@ -122,8 +142,8 @@ class _SwapExchangePageState extends State<SwapExchangePage> {
                   balanceLabel: '余额: 0.0',
                   amountController: _toAmountController,
                   token: _toAsset,
-                  tokens: const ['USDC', 'USDT', 'SOL'],
-                  onTokenChanged: (v) => setState(() => _toAsset = v),
+                  tokens: _allTokens,
+                  onTokenChanged: _setToAsset,
                   chips: const [],
                   readOnlyAmount: true,
                 ),

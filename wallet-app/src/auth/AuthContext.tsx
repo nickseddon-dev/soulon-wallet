@@ -7,19 +7,19 @@ const SESSION_STORAGE_KEY = 'wallet-app-auth-session'
 const DEFAULT_SESSION_TTL_MS = 30 * 60 * 1000
 
 const parseStoredSession = (): AuthSession | null => {
-  const raw = localStorage.getItem(SESSION_STORAGE_KEY)
+  const raw = sessionStorage.getItem(SESSION_STORAGE_KEY)
   if (!raw) {
     return null
   }
   try {
     const parsed = JSON.parse(raw) as AuthSession
     if (!parsed.accountId || !parsed.expiresAt || parsed.expiresAt <= Date.now()) {
-      localStorage.removeItem(SESSION_STORAGE_KEY)
+      sessionStorage.removeItem(SESSION_STORAGE_KEY)
       return null
     }
     return parsed
   } catch {
-    localStorage.removeItem(SESSION_STORAGE_KEY)
+    sessionStorage.removeItem(SESSION_STORAGE_KEY)
     return null
   }
 }
@@ -37,7 +37,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (previous.expiresAt > Date.now()) {
           return previous
         }
-        localStorage.removeItem(SESSION_STORAGE_KEY)
+        sessionStorage.removeItem(SESSION_STORAGE_KEY)
         setInvalidReason('会话已过期，请重新登录。')
         return null
       })
@@ -59,12 +59,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           accountId: normalizedAccountId,
           expiresAt: Date.now() + DEFAULT_SESSION_TTL_MS,
         }
-        localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(nextSession))
+        sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(nextSession))
         setSession(nextSession)
         setInvalidReason('')
       },
       signOut: (reason?: string) => {
-        localStorage.removeItem(SESSION_STORAGE_KEY)
+        sessionStorage.removeItem(SESSION_STORAGE_KEY)
         setSession(null)
         setInvalidReason(reason ?? '')
       },

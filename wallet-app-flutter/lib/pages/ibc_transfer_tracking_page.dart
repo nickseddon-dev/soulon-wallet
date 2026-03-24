@@ -36,6 +36,7 @@ class _IbcTransferTrackingPageState extends State<IbcTransferTrackingPage> {
 
   @override
   void dispose() {
+    _reorgStore.stopAutoRefresh();
     _receiverController.dispose();
     _amountController.dispose();
     super.dispose();
@@ -76,7 +77,7 @@ class _IbcTransferTrackingPageState extends State<IbcTransferTrackingPage> {
                   children: [
                     DropdownButtonFormField<String>(
                       key: ValueKey(_chainId),
-                      initialValue: _chainId,
+                      value: _chainId,
                       items: state.channels
                           .map((channel) => channel.chainId)
                           .toSet()
@@ -97,7 +98,7 @@ class _IbcTransferTrackingPageState extends State<IbcTransferTrackingPage> {
                     const SizedBox(height: 10),
                     DropdownButtonFormField<String>(
                       key: ValueKey('${_chainId}_$_channelId'),
-                      initialValue: _channelId,
+                      value: _channelId,
                       items: channels
                           .map(
                             (item) => DropdownMenuItem(

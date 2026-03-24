@@ -16,9 +16,14 @@ final class OvdAuthRegisterPage extends StatefulWidget {
 class _OvdAuthRegisterPageState extends State<OvdAuthRegisterPage> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  String? _emailError;
+  String? _passwordError;
+
+  static final _emailRegex = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
 
   @override
   void dispose() {
+    _password.clear();
     _email.dispose();
     _password.dispose();
     super.dispose();
@@ -26,7 +31,31 @@ class _OvdAuthRegisterPageState extends State<OvdAuthRegisterPage> {
 
   bool get _canSubmit => _email.text.trim().isNotEmpty && _password.text.trim().isNotEmpty;
 
+  void _validate() {
+    final email = _email.text.trim();
+    final password = _password.text;
+    String? emailErr;
+    String? passwordErr;
+
+    if (email.isNotEmpty && !_emailRegex.hasMatch(email)) {
+      emailErr = '请输入有效的邮箱地址';
+    }
+    if (password.isNotEmpty && password.length < 8) {
+      passwordErr = '密码至少 8 个字符';
+    }
+    setState(() {
+      _emailError = emailErr;
+      _passwordError = passwordErr;
+    });
+  }
+
   void _submit() {
+    _validate();
+    if (_emailError != null || _passwordError != null) return;
+    final email = _email.text.trim();
+    final password = _password.text;
+    if (!_emailRegex.hasMatch(email)) return;
+    if (password.length < 8) return;
     Navigator.pushReplacementNamed(context, WalletRoutes.ovdLauncher);
   }
 
@@ -82,14 +111,16 @@ class _OvdAuthRegisterPageState extends State<OvdAuthRegisterPage> {
                     _Field(
                       controller: _email,
                       hint: '电子邮件',
-                      onChanged: (_) => setState(() {}),
+                      errorText: _emailError,
+                      onChanged: (_) { _validate(); setState(() {}); },
                       obscureText: false,
                     ),
                     const SizedBox(height: 12),
                     _Field(
                       controller: _password,
                       hint: '密码',
-                      onChanged: (_) => setState(() {}),
+                      errorText: _passwordError,
+                      onChanged: (_) { _validate(); setState(() {}); },
                       obscureText: true,
                     ),
                     const SizedBox(height: 16),
@@ -131,35 +162,50 @@ final class _Field extends StatelessWidget {
     required this.hint,
     required this.onChanged,
     required this.obscureText,
+    this.errorText,
   });
 
   final TextEditingController controller;
   final String hint;
   final ValueChanged<String> onChanged;
   final bool obscureText;
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 48,
-      padding: const EdgeInsets.symmetric(horizontal: 14),
-      decoration: BoxDecoration(
-        color: AppColorTokens.background,
-        borderRadius: BorderRadius.circular(AppRadiusTokens.lg),
-        border: Border.all(color: AppColorTokens.border),
-      ),
-      child: TextField(
-        controller: controller,
-        obscureText: obscureText,
-        onChanged: onChanged,
-        style: AppTypographyTokens.body.copyWith(fontWeight: FontWeight.w700),
-        decoration: InputDecoration(
-          hintText: hint,
-          hintStyle: AppTypographyTokens.body.copyWith(color: AppColorTokens.textMuted, fontWeight: FontWeight.w600),
-          border: InputBorder.none,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          height: 48,
+          padding: const EdgeInsets.symmetric(horizontal: 14),
+          decoration: BoxDecoration(
+            color: AppColorTokens.background,
+            borderRadius: BorderRadius.circular(AppRadiusTokens.lg),
+            border: Border.all(color: errorText != null ? AppColorTokens.danger : AppColorTokens.border),
+          ),
+          child: TextField(
+            controller: controller,
+            obscureText: obscureText,
+            onChanged: onChanged,
+            style: AppTypographyTokens.body.copyWith(fontWeight: FontWeight.w700),
+            decoration: InputDecoration(
+              hintText: hint,
+              hintStyle: AppTypographyTokens.body.copyWith(color: AppColorTokens.textMuted, fontWeight: FontWeight.w600),
+              border: InputBorder.none,
+            ),
+          ),
         ),
-      ),
+        if (errorText != null)
+          Padding(
+            padding: const EdgeInsets.only(left: 4, top: 4),
+            child: Text(
+              errorText!,
+              style: const TextStyle(color: AppColorTokens.danger, fontSize: 12),
+            ),
+          ),
+      ],
     );
   }
 }
-

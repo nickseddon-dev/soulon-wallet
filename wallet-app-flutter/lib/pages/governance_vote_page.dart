@@ -127,7 +127,7 @@ class _GovernanceVotePageState extends State<GovernanceVotePage> {
                   children: [
                     DropdownButtonFormField<GovernanceVoteOption>(
                       key: ValueKey(_selectedOption),
-                      initialValue: _selectedOption,
+                      value: _selectedOption,
                       items: const [
                         DropdownMenuItem(value: GovernanceVoteOption.yes, child: Text('Yes')),
                         DropdownMenuItem(value: GovernanceVoteOption.no, child: Text('No')),

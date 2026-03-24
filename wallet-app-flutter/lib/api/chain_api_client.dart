@@ -8,34 +8,28 @@ class ChainApiClient {
   ChainApiClient({
     required this.baseUrl,
     required this.timeout,
+    this.maxRetries = 1,
+    this.retryBackoff = const Duration(milliseconds: 500),
   }) : _httpClient = HttpClient();
 
   final String baseUrl;
   final Duration timeout;
+  final int maxRetries;
+  final Duration retryBackoff;
   final HttpClient _httpClient;
 
   Future<Map<String, dynamic>> getJson(
     String path, {
     Map<String, String>? query,
   }) async {
-    final uri = _buildUri(path, query: query);
-    try {
+    return _executeWithRetry(() async {
+      final uri = _buildUri(path, query: query);
       final request = await _httpClient.getUrl(uri).timeout(timeout);
       request.headers.set(HttpHeaders.acceptHeader, 'application/json');
       final response = await request.close().timeout(timeout);
       final responseText = await utf8.decoder.bind(response).join();
       return _parseResponse(response.statusCode, responseText);
-    } on TimeoutException {
-      throw const ApiClientException(kind: ApiErrorKind.timeout);
-    } on SocketException {
-      throw const ApiClientException(kind: ApiErrorKind.network);
-    } on HttpException {
-      throw const ApiClientException(kind: ApiErrorKind.network);
-    } on FormatException {
-      rethrow;
-    } catch (_) {
-      throw const ApiClientException(kind: ApiErrorKind.unknown);
-    }
+    });
   }
 
   Future<Map<String, dynamic>> postJson(
@@ -43,8 +37,8 @@ class ChainApiClient {
     Map<String, String>? query,
     Map<String, dynamic>? body,
   }) async {
-    final uri = _buildUri(path, query: query);
-    try {
+    return _executeWithRetry(() async {
+      final uri = _buildUri(path, query: query);
       final request = await _httpClient.postUrl(uri).timeout(timeout);
       request.headers.set(HttpHeaders.acceptHeader, 'application/json');
       request.headers.set(HttpHeaders.contentTypeHeader, 'application/json');
@@ -52,17 +46,54 @@ class ChainApiClient {
       final response = await request.close().timeout(timeout);
       final responseText = await utf8.decoder.bind(response).join();
       return _parseResponse(response.statusCode, responseText);
-    } on TimeoutException {
-      throw const ApiClientException(kind: ApiErrorKind.timeout);
-    } on SocketException {
-      throw const ApiClientException(kind: ApiErrorKind.network);
-    } on HttpException {
-      throw const ApiClientException(kind: ApiErrorKind.network);
-    } on FormatException {
-      rethrow;
-    } catch (_) {
-      throw const ApiClientException(kind: ApiErrorKind.unknown);
+    });
+  }
+
+  void close() {
+    _httpClient.close();
+  }
+
+  Future<Map<String, dynamic>> _executeWithRetry(
+    Future<Map<String, dynamic>> Function() action,
+  ) async {
+    for (var attempt = 0; attempt <= maxRetries; attempt++) {
+      try {
+        return await action();
+      } on ApiClientException catch (e) {
+        final retryable = e.statusCode != null && _isRetryableStatus(e.statusCode!);
+        if (!retryable || attempt >= maxRetries) {
+          rethrow;
+        }
+        await Future<void>.delayed(retryBackoff * (attempt + 1));
+      } on TimeoutException {
+        if (attempt >= maxRetries) {
+          throw const ApiClientException(kind: ApiErrorKind.timeout);
+        }
+        await Future<void>.delayed(retryBackoff * (attempt + 1));
+      } on SocketException {
+        if (attempt >= maxRetries) {
+          throw const ApiClientException(kind: ApiErrorKind.network);
+        }
+        await Future<void>.delayed(retryBackoff * (attempt + 1));
+      } on HttpException {
+        if (attempt >= maxRetries) {
+          throw const ApiClientException(kind: ApiErrorKind.network);
+        }
+        await Future<void>.delayed(retryBackoff * (attempt + 1));
+      } on FormatException {
+        rethrow;
+      } catch (_) {
+        if (attempt >= maxRetries) {
+          throw const ApiClientException(kind: ApiErrorKind.unknown);
+        }
+        await Future<void>.delayed(retryBackoff * (attempt + 1));
+      }
     }
+    throw const ApiClientException(kind: ApiErrorKind.unknown);
+  }
+
+  bool _isRetryableStatus(int statusCode) {
+    return statusCode == 429 || statusCode >= 500;
   }
 
   Uri _buildUri(

@@ -73,7 +73,7 @@ class _StakingFlowPageState extends State<StakingFlowPage> {
                   children: [
                     DropdownButtonFormField<StakeActionType>(
                       key: ValueKey(_action),
-                      initialValue: _action,
+                      value: _action,
                       items: const [
                         DropdownMenuItem(value: StakeActionType.delegate, child: Text('Delegate')),
                         DropdownMenuItem(value: StakeActionType.undelegate, child: Text('Undelegate')),
@@ -91,7 +91,7 @@ class _StakingFlowPageState extends State<StakingFlowPage> {
                     const SizedBox(height: 10),
                     DropdownButtonFormField<String>(
                       key: ValueKey(currentValidator),
-                      initialValue: currentValidator,
+                      value: currentValidator,
                       isExpanded: true,
                       items: [
                         for (final item in validators)
@@ -111,7 +111,7 @@ class _StakingFlowPageState extends State<StakingFlowPage> {
                       const SizedBox(height: 10),
                       DropdownButtonFormField<String>(
                         key: ValueKey(currentDestination),
-                        initialValue: currentDestination,
+                        value: currentDestination,
                         isExpanded: true,
                         items: [
                           for (final item in validators)

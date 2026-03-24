@@ -86,7 +86,7 @@ class _OfflineSignatureImportPageState extends State<OfflineSignatureImportPage>
                   children: [
                     DropdownButtonFormField<String>(
                       key: ValueKey(_selectedTaskId),
-                      initialValue: _selectedTaskId,
+                      value: _selectedTaskId,
                       items: tasks
                           .map(
                             (item) => DropdownMenuItem(

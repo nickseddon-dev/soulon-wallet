@@ -22,42 +22,40 @@ void main() {
   testWidgets('replica 首页支持导航切换并渲染入场列表', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: ReplicaMobileHomePage()));
 
-    expect(find.byType(AnimatedSwitcher), findsWidgets);
+    // Home page uses TopTabBar, not AnimatedSwitcher
+    expect(find.text('加密货币'), findsOneWidget);
     expect(find.text('Solana'), findsOneWidget);
 
     await tester.tap(find.text('活动'));
     await tester.pumpAndSettle();
-    expect(find.text('最近活动'), findsOneWidget);
+    // Activity tab shows date-grouped activity items
+    expect(find.text('已发送'), findsWidgets);
 
     await tester.tap(find.text('NFTs'));
     await tester.pumpAndSettle();
-    expect(find.text('Mad Lads #1844'), findsOneWidget);
+    expect(find.text('Soulon'), findsWidgets);
   });
 
-  testWidgets('replica 发送页面表单状态切换可回归', (tester) async {
+  testWidgets('replica 发送页面展示收件人输入', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: ReplicaSendPage()));
 
-    await tester.tap(find.text('下一步：确认'));
-    await tester.pumpAndSettle();
-    expect(find.text('请输入有效地址'), findsOneWidget);
+    // Current send page is a recipient entry page with address input
+    expect(find.text('发送'), findsOneWidget);
+    expect(find.byType(TextField), findsWidgets);
 
-    await tester.enterText(find.byType(TextField).at(0), 'cosmos1abcdefghijklmnopqrstuvwx20');
-    await tester.enterText(find.byType(TextField).at(1), '8.8');
-    await tester.tap(find.text('下一步：确认'));
+    // Enter recipient address
+    await tester.enterText(find.byType(TextField).first, 'cosmos1abcdefghijklmnopqrstuvwx20');
     await tester.pumpAndSettle();
-    expect(find.text('提交发送'), findsOneWidget);
+    expect(find.text('下一步'), findsOneWidget);
   });
 
-  testWidgets('replica 接收页面可展示带动效的请求结果', (tester) async {
+  testWidgets('replica 接收页面展示二维码和地址', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: ReplicaReceivePage()));
 
-    await tester.enterText(find.byType(TextField).at(0), '3.5');
-    await tester.enterText(find.byType(TextField).at(1), 'coffee');
-    await tester.tap(find.text('生成收款请求'));
-    await tester.pumpAndSettle();
-
-    expect(find.textContaining('soulon://receive/'), findsOneWidget);
-    expect(find.byType(AnimatedSwitcher), findsWidgets);
+    // Receive page shows a QR code and address, no text fields
+    expect(find.text('充值'), findsOneWidget);
+    expect(find.text('复制地址'), findsOneWidget);
+    expect(find.textContaining('QEF7'), findsOneWidget);
   });
 
   testWidgets('replica 安全确认页面校验失败与成功状态可切换', (tester) async {

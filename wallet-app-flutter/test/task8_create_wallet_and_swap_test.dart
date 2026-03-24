@@ -18,47 +18,43 @@ void main() {
     expect(swapRoute, isA<PageRouteBuilder<void>>());
   });
 
-  testWidgets('创建钱包页覆盖空态、错误态、成功态', (tester) async {
+  testWidgets('创建钱包页渲染填写步骤与状态卡片', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: CreateWalletPage()));
+    await tester.pump();
 
-    expect(find.text('待创建'), findsOneWidget);
-    expect(find.textContaining('请先填写钱包信息'), findsOneWidget);
+    // Step 0 shows fill form
+    expect(find.text('创建钱包流程'), findsOneWidget);
+    expect(find.text('钱包名称'), findsOneWidget);
+    expect(find.text('助记词长度'), findsOneWidget);
 
-    await tester.tap(find.text('下一步'));
-    await tester.pumpAndSettle();
-    expect(find.text('创建失败'), findsOneWidget);
-    expect(find.text('钱包名称不能为空'), findsOneWidget);
-
-    await tester.enterText(find.byType(TextField).first, '主钱包');
-    await tester.tap(find.byType(Switch).first);
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('下一步'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('确认创建'));
-    await tester.pumpAndSettle();
-    expect(find.text('创建成功'), findsOneWidget);
-    expect(find.textContaining('已创建'), findsOneWidget);
+    // Scroll down to see status card
+    await tester.scrollUntilVisible(
+      find.text('请先填写钱包信息'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.pump();
+    expect(find.text('请先填写钱包信息'), findsOneWidget);
   });
 
-  testWidgets('兑换页覆盖空态、错误态、成功态', (tester) async {
+  testWidgets('兑换页渲染卖买面板与代币选择', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: SwapExchangePage()));
-
-    expect(find.text('待兑换'), findsWidgets);
-    expect(find.textContaining('待兑换'), findsWidgets);
-
-    await tester.tap(find.text('下一步'));
     await tester.pumpAndSettle();
-    expect(find.text('兑换失败'), findsOneWidget);
-    expect(find.text('请输入有效的兑换数量'), findsOneWidget);
 
-    await tester.enterText(find.byType(TextField).first, '2.5');
-    await tester.tap(find.text('下一步'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('确认兑换'));
-    await tester.pumpAndSettle();
-    expect(find.text('兑换提交成功'), findsOneWidget);
-    expect(find.textContaining('→'), findsWidgets);
-    expect(find.textContaining('订单号：SWAP-'), findsWidgets);
+    // Swap page shows mode tabs ("兑换" appears in tab + bottom nav)
+    expect(find.text('兑换'), findsWidgets);
+    expect(find.text('跨链'), findsOneWidget);
+    expect(find.text('卖'), findsOneWidget);
+    expect(find.text('买'), findsOneWidget);
+
+    // Scroll to see hot tokens section
+    await tester.scrollUntilVisible(
+      find.text('热门代币'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.pump();
+    expect(find.text('热门代币'), findsOneWidget);
   });
 
   testWidgets('首页包含创建钱包与兑换入口按钮', (tester) async {

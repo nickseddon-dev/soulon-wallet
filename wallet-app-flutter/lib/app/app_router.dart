@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../motion/route_motion.dart';
 import '../pages/component_showcase_page.dart';
-import '../pages/create_wallet_page.dart';
-import '../pages/foundation_home_page.dart';
 import '../pages/asset_dashboard_page.dart';
 import '../pages/identity_backup_verify_page.dart';
 import '../pages/ibc_transfer_tracking_page.dart';
@@ -18,7 +16,6 @@ import '../pages/governance_vote_page.dart';
 import '../pages/pin_biometric_confirm_page.dart';
 import '../pages/replica_asset_detail_page.dart';
 import '../pages/replica_explore_page.dart';
-import '../pages/replica_import_wallet_page.dart';
 import '../pages/replica_mobile_home_page.dart';
 import '../pages/replica_onboarding_entry_page.dart';
 import '../pages/replica_receive_page.dart';
@@ -53,6 +50,7 @@ import '../pages/ovd_auth_login_page.dart';
 import '../pages/ovd_auth_register_page.dart';
 import '../pages/ovd_launcher_page.dart';
 import '../pages/ovd_placeholder_page.dart';
+import '../pages/global_search_page.dart';
 
 final class WalletRoutes {
   const WalletRoutes._();
@@ -131,6 +129,8 @@ final class WalletRoutes {
   static const String replicaSettingsPreferencesExplorer = '/replica/mobile/settings/preferences/blockchain/explorer';
 
   static const String replicaSettingsAbout = '/replica/mobile/settings/about';
+
+  static const String globalSearch = '/search';
 
   static const String ovdAuthLogin = '/ovd/auth/login';
   static const String ovdAuthRegister = '/ovd/auth/register';
@@ -369,6 +369,8 @@ final class AppRouter {
         return fadeSlideRoute(_withSettingsProvider(const ReplicaAboutPage()));
       case WalletRoutes.replicaSecurityConfirm:
         return fadeSlideRoute(const ReplicaSecurityConfirmPage());
+      case WalletRoutes.globalSearch:
+        return fadeSlideRoute(const GlobalSearchPage());
       case WalletRoutes.home:
       default:
         return fadeSlideRoute(_withOnboardingProvider(const ReplicaOnboardingEntryPage()));

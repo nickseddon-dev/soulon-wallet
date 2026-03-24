@@ -631,17 +631,13 @@ final class _ActivityRow extends StatelessWidget {
     final isPositive = item.amount.startsWith('+');
     final amountColor = isPositive ? AppColorTokens.success : AppColorTokens.textPrimary;
 
-    IconData icon;
     Color iconBg = AppColorTokens.surfaceSubtle;
     Widget inner;
     if (item.type == _ActivityType.nft) {
       inner = const Icon(Icons.hub_outlined, color: AppColorTokens.textPrimary);
-      icon = Icons.hub_outlined;
     } else if (item.type == _ActivityType.received) {
-      icon = Icons.arrow_downward;
       inner = const Icon(Icons.arrow_downward, color: AppColorTokens.success);
     } else {
-      icon = Icons.arrow_upward;
       inner = const Icon(Icons.arrow_upward, color: AppColorTokens.danger);
     }
 

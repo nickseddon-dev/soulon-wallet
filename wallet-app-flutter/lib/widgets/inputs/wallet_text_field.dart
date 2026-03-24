@@ -8,6 +8,7 @@ class WalletTextField extends StatelessWidget {
     required this.label,
     this.hintText,
     this.controller,
+    this.initialValue,
     this.obscureText = false,
     this.keyboardType,
     this.maxLines = 1,
@@ -16,6 +17,7 @@ class WalletTextField extends StatelessWidget {
   final String label;
   final String? hintText;
   final TextEditingController? controller;
+  final String? initialValue;
   final bool obscureText;
   final TextInputType? keyboardType;
   final int maxLines;
@@ -27,8 +29,9 @@ class WalletTextField extends StatelessWidget {
       children: [
         Text(label, style: Theme.of(context).textTheme.labelMedium),
         const SizedBox(height: AppSpacingTokens.sm),
-        TextField(
+        TextFormField(
           controller: controller,
+          initialValue: controller == null ? initialValue : null,
           obscureText: obscureText,
           keyboardType: keyboardType,
           maxLines: maxLines,

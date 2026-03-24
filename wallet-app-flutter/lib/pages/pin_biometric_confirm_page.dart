@@ -72,7 +72,7 @@ class _PinBiometricConfirmPageState extends State<PinBiometricConfirmPage> {
                   children: [
                     DropdownButtonFormField<String>(
                       key: ValueKey(_operation),
-                      initialValue: _operation,
+                      value: _operation,
                       items: const [
                         DropdownMenuItem(value: '转账', child: Text('转账')),
                         DropdownMenuItem(value: '质押', child: Text('质押')),
@@ -109,7 +109,7 @@ class _PinBiometricConfirmPageState extends State<PinBiometricConfirmPage> {
                     const SizedBox(height: 10),
                     DropdownButtonFormField<BiometricMethod>(
                       key: ValueKey(_method),
-                      initialValue: _method,
+                      value: _method,
                       items: const [
                         DropdownMenuItem(value: BiometricMethod.faceId, child: Text('FaceID')),
                         DropdownMenuItem(value: BiometricMethod.fingerprint, child: Text('Fingerprint')),
