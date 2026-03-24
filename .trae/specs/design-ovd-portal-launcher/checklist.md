@@ -1,0 +1,10 @@
+- [x] 钱包首页右上角“四格”入口可见且可点击
+- [x] 点击入口触发 Portal 动效：入口扩张覆盖 + 背景缩放位移 + 图标变形为“三条杠”
+- [x] Launcher 顶部展示动态余额（Mock 法币等价）与 充值/提现/兑换 三按钮
+- [x] Status Stream 持续滚动展示日志（Matrix 风格，Mock 数据）
+- [x] Hero Horizon 使用 PageView.builder 3D 轮播，焦点卡片具备层次变化
+- [x] 焦点卡片启用 tilt 视差（flutter_tilt 或同等实现）
+- [x] 底部功能栏使用 BackdropFilter 磨砂效果，四磁贴入口可点击且跳转占位页
+- [x] 动效规范一致：页面切换 600ms + Curves.easeOutQuart；磁贴反馈 150ms
+- [x] 自建链显示名称统一为 “Overdrive Chian”
+- [x] `flutter analyze` 通过，Web 端新端口可验证更新可见

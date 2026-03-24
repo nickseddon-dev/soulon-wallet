@@ -1,0 +1,33 @@
+{
+  "chain_id": "soulon-testnet-1",
+  "genesis_time": "2026-01-01T00:00:00Z",
+  "app_state": {
+    "bank": {
+      "params": {
+        "default_send_enabled": true
+      },
+      "balances": [
+        {
+          "address": "alice",
+          "amount": 1000
+        }
+      ]
+    },
+    "staking": {
+      "params": {
+        "bond_denom": "usoul",
+        "max_validators": 100,
+        "unbonding_time": "1814400s"
+      }
+    },
+    "distribution": {
+      "params": {}
+    },
+    "gov": {
+      "params": {
+        "voting_period": "172800s",
+        "quorum": "0.334000000000000000"
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+@import './design-tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--token-font-family);
+  font-size: var(--token-font-size-body);
+  color: var(--token-color-text-primary);
+  background: var(--token-color-background);
+}
+
+.popup-shell {
+  width: 375px;
+  min-height: 640px;
+  padding: var(--token-space-lg);
+  background: var(--token-color-background);
+  display: flex;
+  flex-direction: column;
+  gap: var(--token-space-md);
+}
+
+.ext-card {
+  border-radius: var(--token-radius-lg);
+  border: 1px solid var(--token-color-border);
+  background: var(--token-color-surface);
+  box-shadow: var(--token-shadow-card);
+  padding: var(--token-space-lg);
+}
+
+.ext-button {
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: var(--token-radius-md);
+  background: var(--token-color-primary);
+  color: var(--token-color-primary-text);
+  padding: 0 var(--token-space-md);
+  font-weight: 600;
+  transition:
+    transform var(--token-motion-fast) var(--token-motion-ease),
+    filter var(--token-motion-fast) var(--token-motion-ease);
+  cursor: pointer;
+}
+
+.ext-button:not(:disabled):active {
+  transform: translateY(1px);
+  background: var(--token-color-primary-pressed);
+  filter: none;
+}
+
+.ext-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.ext-input {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--token-radius-md);
+  border: 1px solid var(--token-color-border);
+  background: var(--token-color-surface-subtle);
+  color: var(--token-color-text-primary);
+  padding: 0 var(--token-space-md);
+  transition: border-color var(--token-motion-fast) var(--token-motion-ease);
+}
+
+.ext-input:focus {
+  outline: none;
+  border-color: var(--token-color-accent);
+}
+
+.ext-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  border-radius: var(--token-radius-pill);
+  padding: 0 var(--token-space-sm);
+  background: var(--token-color-surface-subtle);
+  color: var(--token-color-text-primary);
+  font-size: var(--token-font-size-label);
+  font-weight: 600;
+}
+
+.ext-modal-mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 11, 20, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--token-space-lg);
+  z-index: 20;
+}
+
+.ext-modal {
+  width: 100%;
+  border-radius: var(--token-radius-lg);
+  border: 1px solid var(--token-color-border);
+  background: var(--token-color-surface);
+  box-shadow: var(--token-shadow-surface);
+  padding: var(--token-space-lg);
+}

@@ -1,0 +1,15 @@
+{
+  "version": "v2.1.0-rc.1",
+  "milestone": "Wallet-Release-Readiness",
+  "generatedAt": "2026-03-06T20:08:34+08:00",
+  "sourceArchive": "deploy/reports/p2-acceptance/archive/v2.1.0/20260306-194523",
+  "artifacts": [
+    "deploy/reports/p2-acceptance/archive/v2.1.0/20260306-194523/v2-acceptance-summary.md",
+    "deploy/reports/p2-acceptance/archive/v2.1.0/20260306-194523/v2-acceptance-summary.json",
+    "soulon-backend/reports/release-readiness/release-readiness-check-20260306-194525.md",
+    ".trae/specs/plan-next-phase-wallet-release-readiness/rc-v2.1.0-rc.1-change-summary-20260306.md",
+    ".trae/specs/plan-next-phase-wallet-release-readiness/release-acceptance-risk-list-20260306.md",
+    ".trae/specs/plan-next-phase-wallet-release-readiness/verification-task4-20260306.md"
+  ],
+  "packageFile": "deploy/reports/release-candidates/v2.1.0-rc.1/wallet-release-readiness-v2.1.0-rc.1.zip"
+}

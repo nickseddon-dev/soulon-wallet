@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class AppIcons {
+  const AppIcons._();
+
+  static const String _balancesIcon = '''
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M15.7664 5L18.7664 0H5.23438L8.23438 5H15.7664Z" fill="currentColor" />
+  <path d="M16.416 7H7.583C5.416 9.305 2 13.492 2 17C2 19.1 2.975 24 12 24C21.025 24 22 19.1 22 17C22 13.492 18.582 9.305 16.416 7Z" fill="currentColor" />
+</svg>
+''';
+
+  static const String _collectiblesIcon = '''
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M20 1H4C3.20435 1 2.44129 1.31607 1.87868 1.87868C1.31607 2.44129 1 3.20435 1 4V20C1 20.7956 1.31607 21.5587 1.87868 22.1213C2.44129 22.6839 3.20435 23 4 23H20C20.7956 23 21.5587 22.6839 22.1213 22.1213C22.6839 21.5587 23 20.7956 23 20V4C23 3.20435 22.6839 2.44129 22.1213 1.87868C21.5587 1.31607 20.7956 1 20 1V1ZM9.5 6C9.79667 6 10.0867 6.08797 10.3334 6.2528C10.58 6.41762 10.7723 6.65189 10.8858 6.92597C10.9994 7.20006 11.0291 7.50166 10.9712 7.79264C10.9133 8.08361 10.7704 8.35088 10.5607 8.56066C10.3509 8.77044 10.0836 8.9133 9.79264 8.97118C9.50166 9.02906 9.20006 8.99935 8.92597 8.88582C8.65189 8.77229 8.41762 8.58003 8.2528 8.33335C8.08797 8.08668 8 7.79667 8 7.5C8 7.10218 8.15804 6.72064 8.43934 6.43934C8.72064 6.15804 9.10218 6 9.5 6ZM18.925 16.763C18.8802 16.8354 18.8177 16.8952 18.7433 16.9367C18.6689 16.9782 18.5852 17 18.5 17H5.5C5.41075 17 5.32312 16.9761 5.24622 16.9308C5.16932 16.8855 5.10594 16.8204 5.06268 16.7424C5.01941 16.6643 4.99783 16.5761 5.00017 16.4869C5.00251 16.3977 5.0287 16.3107 5.076 16.235L7.576 12.235C7.61791 12.168 7.6751 12.1119 7.74288 12.0713C7.81067 12.0306 7.88712 12.0066 7.96596 12.0013C8.04481 11.9959 8.1238 12.0093 8.19647 12.0404C8.26914 12.0714 8.3334 12.1193 8.384 12.18L10.479 14.694L14.6 9.2C14.6519 9.13248 14.7197 9.07886 14.7973 9.04396C14.875 9.00906 14.9601 8.99395 15.045 9C15.1294 9.00799 15.2105 9.03734 15.2804 9.08527C15.3504 9.1332 15.407 9.19815 15.445 9.274L18.945 16.274C18.9839 16.3504 19.0024 16.4355 18.9989 16.5211C18.9954 16.6067 18.97 16.69 18.925 16.763V16.763Z" fill="currentColor" />
+</svg>
+''';
+
+  static const String _swapIcon = '''
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12ZM15 6.5L18.15 9.65C18.35 9.85 18.35 10.16 18.15 10.36L15 13.5V11H11V9H15V6.5ZM9 17.5L5.85 14.35C5.65 14.15 5.65 13.84 5.85 13.64L9 10.5V13H13V15H9V17.5Z" fill="currentColor" />
+</svg>
+''';
+
+  static const String _appsIcon = '''
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M9 1H3C1.89543 1 1 1.89543 1 3V9C1 10.1046 1.89543 11 3 11H9C10.1046 11 11 10.1046 11 9V3C11 1.89543 10.1046 1 9 1Z" fill="currentColor" />
+  <path d="M23.4285 4.61798L19.3815 0.571977C19.0147 0.206683 18.5182 0.00158691 18.0005 0.00158691C17.4829 0.00158691 16.9863 0.206683 16.6195 0.571977L12.5725 4.61798C12.2071 4.9851 12.002 5.48199 12.002 5.99998C12.002 6.51796 12.2071 7.01486 12.5725 7.38198L16.6195 11.429C16.9863 11.7943 17.4829 11.9994 18.0005 11.9994C18.5182 11.9994 19.0147 11.7943 19.3815 11.429L23.4285 7.38298C23.7942 7.01582 23.9996 6.5187 23.9996 6.00048C23.9996 5.48225 23.7942 4.98514 23.4285 4.61798Z" fill="currentColor" />
+  <path d="M21 13H15C13.8954 13 13 13.8954 13 15V21C13 22.1046 13.8954 23 15 23H21C22.1046 23 23 22.1046 23 21V15C23 13.8954 22.1046 13 21 13Z" fill="currentColor" />
+  <path d="M9 13H3C1.89543 13 1 13.8954 1 15V21C1 22.1046 1.89543 23 3 23H9C10.1046 23 11 22.1046 11 21V15C11 13.8954 10.1046 13 9 13Z" fill="currentColor" />
+</svg>
+''';
+
+  static const String _backpackLogo = '''
+<svg xmlns="http://www.w3.org/2000/svg" width="55" height="80" viewBox="0 0 55 80" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M32.71 6.29026C35.6178 6.29026 38.3452 6.68005 40.8705 7.40296C38.3982 1.64085 33.2649 0 27.5519 0C21.8277 0 16.6855 1.64729 14.2188 7.43692C16.7255 6.68856 19.4412 6.29026 22.339 6.29026H32.71ZM21.6739 12.0752C7.86677 12.0752 0 22.9371 0 36.336V50.1C0 51.4399 1.11929 52.5 2.5 52.5H52.5C53.8807 52.5 55 51.4399 55 50.1V36.336C55 22.9371 45.8521 12.0752 32.0449 12.0752H21.6739ZM27.4805 36.4551C32.313 36.4551 36.2305 32.5376 36.2305 27.7051C36.2305 22.8726 32.313 18.9551 27.4805 18.9551C22.648 18.9551 18.7305 22.8726 18.7305 27.7051C18.7305 32.5376 22.648 36.4551 27.4805 36.4551ZM0 60.5901C0 59.2503 1.11929 58.1641 2.5 58.1641H52.5C53.8807 58.1641 55 59.2503 55 60.5901V75.1466C55 77.8264 52.7614 79.9988 50 79.9988H5C2.23857 79.9988 0 77.8264 0 75.1466V60.5901Z" fill="currentColor" />
+</svg>
+''';
+
+  static Widget balances({Color? color, double size = 24}) => SvgPicture.string(_balancesIcon, width: size, height: size, colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null);
+  static Widget collectibles({Color? color, double size = 24}) => SvgPicture.string(_collectiblesIcon, width: size, height: size, colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null);
+  static Widget swap({Color? color, double size = 24}) => SvgPicture.string(_swapIcon, width: size, height: size, colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null);
+  static Widget apps({Color? color, double size = 24}) => SvgPicture.string(_appsIcon, width: size, height: size, colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null);
+  static Widget backpackLogo({Color? color, double size = 55}) => SvgPicture.string(_backpackLogo, width: size, height: size, colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null);
+}

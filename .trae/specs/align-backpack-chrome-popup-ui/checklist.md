@@ -1,0 +1,8 @@
+- [x] 扩展端导航层级与 Backpack 一致（Root/Tabs/Modal/TransparentModal）
+- [x] Root Header 结构一致（AvatarPopover / ActiveWallet / Settings）
+- [x] TabsNavigator 交互一致（居中 TabBar、无切换动画）
+- [x] Send 多屏流程一致（Token→Address→Amount→Confirm）且 closeBehavior 正确
+- [x] P0 详情页可达并可正确返回（TokensDetail/ActivityDetail）
+- [x] Search 透明模态可打开/关闭，Esc 关闭，焦点不丢失
+- [x] 扩展端设计令牌与 Flutter `AppColorTokens` 语义与色值对齐
+- [x] TypeScript typecheck 与 eslint 无阻断错误

@@ -1,0 +1,264 @@
+﻿{
+    "generatedAt":  "2026-03-04T01:35:55.6749722+08:00",
+    "iterations":  2,
+    "total":  8,
+    "pass":  8,
+    "fail":  0,
+    "averageDurationMs":  921,
+    "trendWindow":  5,
+    "thresholdSuggestions":  {
+                                 "sampleSize":  1,
+                                 "errorRate":  {
+                                                   "latestPct":  0,
+                                                   "p90Pct":  0,
+                                                   "averagePct":  0,
+                                                   "recommendedPct":  5
+                                               },
+                                 "duration":  {
+                                                  "latestMs":  921,
+                                                  "p90Ms":  921,
+                                                  "averageMs":  921,
+                                                  "recommendedMs":  2000
+                                              },
+                                 "consecutiveFailures":  {
+                                                             "latestStreak":  0,
+                                                             "maxObservedStreak":  0,
+                                                             "recommendedCount":  2
+                                                         }
+                             },
+    "alertRuleSuggestions":  {
+                                 "globalRules":  [
+                                                     {
+                                                         "name":  "chaos_error_rate_pct_high",
+                                                         "expr":  "chaos_fail_rate_pct \u003e 5",
+                                                         "threshold":  5,
+                                                         "unit":  "percent",
+                                                         "severity":  "warning",
+                                                         "window":  "5m",
+                                                         "description":  "Chaos error rate exceeds recommended threshold"
+                                                     },
+                                                     {
+                                                         "name":  "chaos_average_duration_ms_high",
+                                                         "expr":  "chaos_average_duration_ms \u003e 2000",
+                                                         "threshold":  2000,
+                                                         "unit":  "ms",
+                                                         "severity":  "warning",
+                                                         "window":  "5m",
+                                                         "description":  "Chaos average duration exceeds recommended threshold"
+                                                     },
+                                                     {
+                                                         "name":  "chaos_consecutive_failures_high",
+                                                         "expr":  "chaos_consecutive_failures \u003e 2",
+                                                         "threshold":  2,
+                                                         "unit":  "count",
+                                                         "severity":  "critical",
+                                                         "window":  "10m",
+                                                         "description":  "Chaos consecutive failures exceed recommended threshold"
+                                                     }
+                                                 ],
+                                 "scenarioRules":  [
+
+                                                   ]
+                             },
+    "recoveryPlaybook":  [
+                             {
+                                 "scenario":  "baseline",
+                                 "riskLevel":  "low",
+                                 "severity":  "info",
+                                 "thresholdReference":  {
+                                                            "errorRatePct":  5,
+                                                            "averageDurationMs":  2000,
+                                                            "consecutiveFailures":  2
+                                                        },
+                                 "preChecks":  [
+                                                   "Check base environment health",
+                                                   "Check test data readiness"
+                                               ],
+                                 "actions":  [
+                                                 "Keep current settings and monitor",
+                                                 "Run baseline chaos checks periodically"
+                                             ],
+                                 "postChecks":  [
+                                                    "Core metrics stay stable"
+                                                ]
+                             },
+                             {
+                                 "scenario":  "kafka_pause_unpause",
+                                 "riskLevel":  "low",
+                                 "severity":  "info",
+                                 "thresholdReference":  {
+                                                            "errorRatePct":  5,
+                                                            "averageDurationMs":  2000,
+                                                            "consecutiveFailures":  2
+                                                        },
+                                 "preChecks":  [
+                                                   "Check consumer lag",
+                                                   "Check paused partition recovery time",
+                                                   "Check DLQ write rate"
+                                               ],
+                                 "actions":  [
+                                                 "Reduce pause duration and rerun test",
+                                                 "Scale consumers and concurrency",
+                                                 "Inspect whether failures focus on one partition"
+                                             ],
+                                 "postChecks":  [
+                                                    "Partition lag keeps decreasing",
+                                                    "Consecutive failures are below threshold",
+                                                    "DLQ growth returns to normal"
+                                                ]
+                             },
+                             {
+                                 "scenario":  "kafka_restart",
+                                 "riskLevel":  "low",
+                                 "severity":  "info",
+                                 "thresholdReference":  {
+                                                            "errorRatePct":  5,
+                                                            "averageDurationMs":  2000,
+                                                            "consecutiveFailures":  2
+                                                        },
+                                 "preChecks":  [
+                                                   "Check Kafka broker health",
+                                                   "Check partition leaders",
+                                                   "Check consumer group rebalance status"
+                                               ],
+                                 "actions":  [
+                                                 "Restart broker and observe for 3 minutes",
+                                                 "Tune consumer retry and timeout settings",
+                                                 "Scale consumers if lag grows"
+                                             ],
+                                 "postChecks":  [
+                                                    "chaos_fail_rate_pct drops below threshold",
+                                                    "Consumer latency stays below threshold",
+                                                    "No new critical alerts"
+                                                ]
+                             },
+                             {
+                                 "scenario":  "postgres_restart",
+                                 "riskLevel":  "low",
+                                 "severity":  "info",
+                                 "thresholdReference":  {
+                                                            "errorRatePct":  5,
+                                                            "averageDurationMs":  2000,
+                                                            "consecutiveFailures":  2
+                                                        },
+                                 "preChecks":  [
+                                                   "Check connection pool saturation",
+                                                   "Check archive and maintenance status",
+                                                   "Check slow query trend"
+                                               ],
+                                 "actions":  [
+                                                 "Restart Postgres instance and verify connectivity",
+                                                 "Review slow queries and indexes",
+                                                 "Verify archive writes recovered"
+                                             ],
+                                 "postChecks":  [
+                                                    "Error rate is below threshold",
+                                                    "Average duration returns to baseline",
+                                                    "No maintenance failures"
+                                                ]
+                             }
+                         ],
+    "scenarioSummary":  [
+                            {
+                                "scenario":  "baseline",
+                                "total":  2,
+                                "pass":  2,
+                                "fail":  0,
+                                "passRate":  100,
+                                "avgDurationMs":  928,
+                                "riskLevel":  "low",
+                                "recoveryAction":  "Continue monitoring with routine verification"
+                            },
+                            {
+                                "scenario":  "kafka_pause_unpause",
+                                "total":  2,
+                                "pass":  2,
+                                "fail":  0,
+                                "passRate":  100,
+                                "avgDurationMs":  922,
+                                "riskLevel":  "low",
+                                "recoveryAction":  "Continue monitoring with routine verification"
+                            },
+                            {
+                                "scenario":  "kafka_restart",
+                                "total":  2,
+                                "pass":  2,
+                                "fail":  0,
+                                "passRate":  100,
+                                "avgDurationMs":  909,
+                                "riskLevel":  "low",
+                                "recoveryAction":  "Continue monitoring with routine verification"
+                            },
+                            {
+                                "scenario":  "postgres_restart",
+                                "total":  2,
+                                "pass":  2,
+                                "fail":  0,
+                                "passRate":  100,
+                                "avgDurationMs":  924,
+                                "riskLevel":  "low",
+                                "recoveryAction":  "Continue monitoring with routine verification"
+                            }
+                        ],
+    "historyTrend":  {
+
+                     },
+    "results":  [
+                    {
+                        "scenario":  "baseline",
+                        "iteration":  1,
+                        "status":  "pass",
+                        "durationMs":  935,
+                        "message":  "ok"
+                    },
+                    {
+                        "scenario":  "kafka_restart",
+                        "iteration":  1,
+                        "status":  "pass",
+                        "durationMs":  911,
+                        "message":  "ok"
+                    },
+                    {
+                        "scenario":  "postgres_restart",
+                        "iteration":  1,
+                        "status":  "pass",
+                        "durationMs":  921,
+                        "message":  "ok"
+                    },
+                    {
+                        "scenario":  "kafka_pause_unpause",
+                        "iteration":  1,
+                        "status":  "pass",
+                        "durationMs":  929,
+                        "message":  "ok"
+                    },
+                    {
+                        "scenario":  "baseline",
+                        "iteration":  2,
+                        "status":  "pass",
+                        "durationMs":  922,
+                        "message":  "ok"
+                    },
+                    {
+                        "scenario":  "kafka_restart",
+                        "iteration":  2,
+                        "status":  "pass",
+                        "durationMs":  907,
+                        "message":  "ok"
+                    },
+                    {
+                        "scenario":  "postgres_restart",
+                        "iteration":  2,
+                        "status":  "pass",
+                        "durationMs":  926,
+                        "message":  "ok"
+                    },
+                    {
+                        "scenario":  "kafka_pause_unpause",
+                        "iteration":  2,
+                        "status":  "pass",
+                        "durationMs":  914,
+                        "message":  "ok"
+                    }
+                ]
+}

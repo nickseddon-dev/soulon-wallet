@@ -1,0 +1,11 @@
+{
+  "senderMnemonic": "",
+  "recipientAddress": "",
+  "transferAmount": "1",
+  "memo": "wallet-e2e-testnet",
+  "timeoutMs": 60000,
+  "pollIntervalMs": 2000,
+  "offlineMnemonic": "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about",
+  "offlineRecipientAddress": "",
+  "offlineConfirmedHeight": 1
+}

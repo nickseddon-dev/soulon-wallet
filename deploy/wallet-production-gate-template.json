@@ -1,0 +1,53 @@
+{
+  "templateVersion": "v2",
+  "milestone": "Wallet-Production-Architecture",
+  "version": "v2.2.0",
+  "modules": [
+    {
+      "name": "soulon-backend",
+      "path": "soulon-backend",
+      "gates": [
+        {
+          "name": "go_test",
+          "command": "go test ./..."
+        },
+        {
+          "name": "perf_baseline_rollback",
+          "command": "powershell -ExecutionPolicy Bypass -File ./scripts/check-release-readiness.ps1"
+        }
+      ]
+    },
+    {
+      "name": "wallet-app-flutter",
+      "path": "wallet-app-flutter",
+      "gates": [
+        {
+          "name": "flutter_analyze",
+          "command": "flutter analyze --no-fatal-infos"
+        },
+        {
+          "name": "flutter_test",
+          "command": "flutter test"
+        }
+      ]
+    },
+    {
+      "name": "soulon-wallet",
+      "path": "soulon-wallet",
+      "gates": [
+        {
+          "name": "check",
+          "command": "npm run check"
+        },
+        {
+          "name": "test_unit",
+          "command": "npm run test:unit"
+        },
+        {
+          "name": "e2e_regression",
+          "command": "npm run gate:e2e-regression"
+        }
+      ]
+    }
+  ]
+}

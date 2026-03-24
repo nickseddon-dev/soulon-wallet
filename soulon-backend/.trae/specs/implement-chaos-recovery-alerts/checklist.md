@@ -1,0 +1,6 @@
+- [x] Chaos 报告包含每个场景的风险等级与恢复建议
+- [x] Chaos 报告包含基于历史窗口的告警阈值建议
+- [x] `reports/chaos/` 同时产出 Markdown 与 JSON 报告
+- [x] Chaos CI 可展示建议摘要并上传报告产物
+- [x] README 已更新报告结构、参数与使用说明
+- [x] 脚本语法校验与 `go test ./...` 均通过

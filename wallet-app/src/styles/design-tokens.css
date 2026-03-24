@@ -1,0 +1,42 @@
+:root {
+  --token-color-primary: #3a82f7;
+  --token-color-primary-pressed: #2968cc;
+  --token-color-accent: #3a82f7;
+  --token-color-background: #18181b;
+  --token-color-surface: #27272a;
+  --token-color-surface-subtle: #3f3f46;
+  --token-color-border: #3f3f46;
+  --token-color-success: #22c55e;
+  --token-color-warning: #f59e0b;
+  --token-color-danger: #ef4444;
+  --token-color-text-primary: #fafafa;
+  --token-color-text-secondary: #d4d4d8;
+  --token-color-text-muted: #a1a1aa;
+
+  --token-font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --token-font-size-title-lg: 32px;
+  --token-font-size-title-md: 20px;
+  --token-font-size-body: 14px;
+  --token-font-size-label: 12px;
+
+  --token-space-xs: 4px;
+  --token-space-sm: 8px;
+  --token-space-md: 12px;
+  --token-space-lg: 16px;
+  --token-space-xl: 24px;
+  --token-space-xxl: 32px;
+
+  --token-radius-sm: 8px;
+  --token-radius-md: 12px;
+  --token-radius-lg: 16px;
+  --token-radius-pill: 999px;
+
+  --token-shadow-surface: none;
+  --token-shadow-card: none;
+
+  --token-motion-fast: 120ms;
+  --token-motion-normal: 200ms;
+  --token-motion-slow: 320ms;
+  --token-motion-ease: ease-out;
+  --token-motion-emphasized: cubic-bezier(0.2, 0, 0, 1);
+}

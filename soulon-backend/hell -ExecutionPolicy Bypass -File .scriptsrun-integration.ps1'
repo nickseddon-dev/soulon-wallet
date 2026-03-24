@@ -1,0 +1,75 @@
+warning: in the working copy of '.trae/specs/launch-wallet-mainline-development/checklist.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.trae/specs/launch-wallet-mainline-development/verification-20260304.md', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/.trae/specs/launch-wallet-mainline-development/checklist.md b/.trae/specs/launch-wallet-mainline-development/verification-20260304.md[m
+[1mindex 1cd311e..07c1653 100644[m
+[1m--- a/.trae/specs/launch-wallet-mainline-development/checklist.md[m
+[1m+++ b/.trae/specs/launch-wallet-mainline-development/verification-20260304.md[m
+[36m@@ -1,7 +1,61 @@[m
+[31m-- [x] 钱包主线工程可本地启动，基础页面与路由可访问[m
+[31m-- [x] 网络访问层已统一封装，并具备超时与错误模型[m
+[31m-- [x] 钱包已成功对接冻结 API 契约并通过契约一致性校验[m
+[31m-- [x] 资产与交易查询页面在联调环境可稳定展示结果[m
+[31m-- [x] 鉴权壳与会话失效处理流程可验证[m
+[31m-- [x] 钱包-后端联调清单已完成并记录阻塞项处理结果[m
+[31m-- [x] 测试、构建与基础质量门禁通过，可进入下一迭代[m
+[32m+[m[32m# Checklist 核验记录（2026-03-04）[m
+[32m+[m
+[32m+[m[32m## 1) 钱包主线工程可本地启动，基础页面与路由可访问[m
+[32m+[m[32m- 验证命令：[m
+[32m+[m[32m  - `npm run dev -- --host 127.0.0.1 --port 5173`[m
+[32m+[m[32m  - `Invoke-WebRequest http://127.0.0.1:5173/`[m
+[32m+[m[32m  - `Invoke-WebRequest http://127.0.0.1:5173/state`[m
+[32m+[m[32m  - `Invoke-WebRequest http://127.0.0.1:5173/events`[m
+[32m+[m[32m- 结果：[m
+[32m+[m[32m  - `FRONTEND http://127.0.0.1:5173/ => 200`[m
+[32m+[m[32m  - `FRONTEND http://127.0.0.1:5173/state => 200`[m
+[32m+[m[32m  - `FRONTEND http://127.0.0.1:5173/events => 200`[m
+[32m+[m
+[32m+[m[32m## 2) 网络访问层已统一封装，并具备超时与错误模型[m
+[32m+[m[32m- 证据：[m
+[32m+[m[32m  - `wallet-app/src/api/client.ts` 统一请求入口 `ApiClient.request`，含 `timeoutMs`、重试与错误分类（`TIMEOUT`/`NETWORK`/`HTTP_ERROR`/`PARSE_ERROR`）。[m
+[32m+[m[32m  - `wallet-app/src/api/errors.ts` 定义标准错误模型 `ApiClientError` 与会话失效判断 `isSessionInvalidError`。[m
+[32m+[m
+[32m+[m[32m## 3) 钱包已成功对接冻结 API 契约并通过契约一致性校验[m
+[32m+[m[32m- 验证命令：[m
+[32m+[m[32m  - `go test ./internal/api -run TestWalletAPIContractFrozen -v`[m
+[32m+[m[32m- 结果：[m
+[32m+[m[32m  - `=== RUN   TestWalletAPIContractFrozen`[m
+[32m+[m[32m  - `--- PASS: TestWalletAPIContractFrozen (0.00s)`[m
+[32m+[m[32m  - `PASS`[m
+[32m+[m[32m- 证据：[m
+[32m+[m[32m  - `contracts/wallet-api-v1.json` 已冻结 `v1.0.0` 契约。[m
+[32m+[m[32m  - `internal/api/contract_freeze_test.go` 校验版本、冻结状态与端点集合。[m
+[32m+[m
+[32m+[m[32m## 4) 资产与交易查询页面在联调环境可稳定展示结果[m
+[32m+[m[32m- 验证命令：[m
+[32m+[m[32m  - `go run ./cmd/api`[m
+[32m+[m[32m  - `Invoke-RestMethod http://127.0.0.1:8082/v1/indexer/state`[m
+[32m+[m[32m  - `Invoke-RestMethod http://127.0.0.1:8082/v1/indexer/events?limit=2&offset=0`[m
+[32m+[m[32m- 结果：[m
+[32m+[m[32m  - `API /v1/indexer/state => tipHeight=0; tipHash=; total=0; reorgs=0`[m
+[32m+[m[32m  - `API /v1/indexer/events => total=0; returned=0; hasMore=`[m
+[32m+[m[32m- 证据：[m
+[32m+[m[32m  - `wallet-app/src/pages/StatePage.tsx` 与 `wallet-app/src/pages/EventsPage.tsx` 均已接入对应接口并处理加载/错误/空态。[m
+[32m+[m
+[32m+[m[32m## 5) 鉴权壳与会话失效处理流程可验证[m
+[32m+[m[32m- 证据：[m
+[32m+[m[32m  - `wallet-app/src/auth/RequireAuth.tsx` 未登录自动跳转 `/login`。[m
+[32m+[m[32m  - `wallet-app/src/auth/AuthContext.tsx` 提供会话存储、过期清理与失效原因。[m
+[32m+[m[32m  - `wallet-app/src/pages/HomePage.tsx`、`StatePage.tsx`、`EventsPage.tsx` 在 401/403 时统一执行 `signOut('会话已失效，请重新登录。')`。[m
+[32m+[m
+[32m+[m[32m## 6) 钱包-后端联调清单已完成并记录阻塞项处理结果[m
+[32m+[m[32m- 证据：[m
+[32m+[m[32m  - `.trae/specs/launch-wallet-mainline-development/task5-audit-20260304.md` 记录联调过程、门禁结果与阻塞项处理。[m
+[32m+[m[32m  - `wallet-app/.env.example` 与 `wallet-app/src/config/env.ts` 默认 API 地址已对齐 `http://127.0.0.1:8082`。[m
+[32m+[m[32m  - `internal/config/config.go` 默认 `API_LISTEN_ADDR` 为 `:8082`。[m
+[32m+[m
+[32m+[m[32m## 7) 测试、构建与基础质量门禁通过，可进入下一迭代[m
+[32m+[m[32m- 验证命令：[m
+[32m+[m[32m  - `npm run validate`（wallet-app）[m
+[32m+[m[32m  - `go test ./...`（soulon-backend）[m
+[32m+[m[32m  - 工作区诊断检查[m
+[32m+[m[32m- 结果：[m
+[32m+[m[32m  - `npm run validate` 成功执行 lint、typecheck、build（exit code 0）。[m
+[32m+[m[32m  - `go test ./...` 全量通过（exit code 0）。[m
+[32m+[m[32m  - 诊断结果 `[]`（0 条）。[m

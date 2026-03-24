@@ -1,0 +1,6 @@
+- [x] User can successfully create a new wallet with 12/24 words
+- [x] User must verify the mnemonic phrase before completion (at least 1-2 words)
+- [x] User can successfully import an existing 12/24 word mnemonic
+- [x] Mnemonic input validates checksum and word count
+- [x] UI matches Backpack dark mode (colors, typography, spacing)
+- [x] Transitions between onboarding steps are smooth (fade/slide)

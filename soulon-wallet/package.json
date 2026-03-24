@@ -1,0 +1,27 @@
+{
+  "name": "soulon-wallet",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "gate:e2e-regression": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/gate-e2e-regression.ps1",
+    "validate:deploy": "node ./scripts/validate-deploy-config.mjs",
+    "smoke:deploy": "node ./scripts/deploy-smoke.mjs",
+    "test:e2e": "npm run build && node ./scripts/wallet-testnet-e2e.mjs",
+    "test:business": "npm run build && node ./scripts/wallet-business-integration.mjs",
+    "test:unit": "npm run build && node --test ./tests/**/*.test.mjs",
+    "security:precheck": "node ./scripts/security-precheck.mjs",
+    "deploy:test": "npm run check && npm run build && npm run validate:deploy && npm run security:precheck && npm run smoke:deploy"
+  },
+  "dependencies": {
+    "@cosmjs/crypto": "^0.34.1",
+    "@cosmjs/proto-signing": "^0.34.1",
+    "@cosmjs/stargate": "^0.34.1",
+    "cosmjs-types": "^0.10.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

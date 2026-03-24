@@ -1,0 +1,127 @@
+﻿{
+    "generatedAt":  "2026-03-05T21:31:00.7430032+08:00",
+    "templateVersion":  "v2",
+    "milestone":  "P2-Complete",
+    "version":  "v2.0.0",
+    "overallStatus":  "pass",
+    "totalModules":  4,
+    "failedModules":  0,
+    "totalGates":  5,
+    "failedGates":  0,
+    "reportPath":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\v2-acceptance-summary.md",
+    "archivePath":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039",
+    "modules":  [
+                    {
+                        "module":  "soulon-backend",
+                        "modulePath":  "D:\\soulon_wallet\\soulon-backend",
+                        "totalGates":  1,
+                        "passedGates":  1,
+                        "failedGates":  0,
+                        "status":  "pass"
+                    },
+                    {
+                        "module":  "wallet-app",
+                        "modulePath":  "D:\\soulon_wallet\\wallet-app",
+                        "totalGates":  1,
+                        "passedGates":  1,
+                        "failedGates":  0,
+                        "status":  "pass"
+                    },
+                    {
+                        "module":  "soulon-wallet",
+                        "modulePath":  "D:\\soulon_wallet\\soulon-wallet",
+                        "totalGates":  2,
+                        "passedGates":  2,
+                        "failedGates":  0,
+                        "status":  "pass"
+                    },
+                    {
+                        "module":  "soulon-deep-chain",
+                        "modulePath":  "D:\\soulon_wallet\\soulon-deep-chain",
+                        "totalGates":  1,
+                        "passedGates":  1,
+                        "failedGates":  0,
+                        "status":  "pass"
+                    }
+                ],
+    "gates":  [
+                  {
+                      "module":  "soulon-backend",
+                      "modulePath":  "D:\\soulon_wallet\\soulon-backend",
+                      "gate":  "go_test",
+                      "command":  "go test ./...",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  2092,
+                      "startedAt":  "2026-03-05T21:30:39.1571255+08:00",
+                      "endedAt":  "2026-03-05T21:30:41.2486620+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\logs\\soulon-backend-go_test-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\logs\\soulon-backend-go_test-stderr.log",
+                      "stdoutTail":  "?   \tsoulon-backend/cmd/api\t[no test files]\r\n?   \tsoulon-backend/cmd/gateway\t[no test files]\r\n?   \tsoulon-backend/cmd/indexer\t[no test files]\r\nok  \tsoulon-backend/internal/api\t(cached)\r\nok  \tsoulon-backend/internal/config\t(cached)\r\nok  \tsoulon-backend/internal/gateway\t(cached)\r\nok  \tsoulon-backend/internal/indexer\t(cached)",
+                      "stderrTail":  ""
+                  },
+                  {
+                      "module":  "wallet-app",
+                      "modulePath":  "D:\\soulon_wallet\\wallet-app",
+                      "gate":  "validate",
+                      "command":  "npm run validate",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  10158,
+                      "startedAt":  "2026-03-05T21:30:41.2806718+08:00",
+                      "endedAt":  "2026-03-05T21:30:51.4384960+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\logs\\wallet-app-validate-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\logs\\wallet-app-validate-stderr.log",
+                      "stdoutTail":  "\u003e eslint .\r\n\r\n\r\n\u003e wallet-app@0.0.0 typecheck\r\n\u003e tsc -b --pretty false\r\n\r\n\r\n\u003e wallet-app@0.0.0 build\r\n\u003e tsc -b \u0026\u0026 vite build\r\n\r\n\u001b[36mvite v8.0.0-beta.16 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\r\n\u001b[2K\r\ntransforming...鉁?38 modules transformed.\r\nrendering chunks...\r\ncomputing gzip size...\r\ndist/index.html                   0.45 kB 鈹?gzip:  0.29 kB\r\ndist/assets/index-Dbl3fxah.css    9.14 kB 鈹?gzip:  2.51 kB\r\ndist/assets/index-BeZ3Ku6x.js   291.76 kB 鈹?gzip: 90.39 kB\r\n\r\n\u001b[32m鉁?built in 241ms\u001b[39m",
+                      "stderrTail":  ""
+                  },
+                  {
+                      "module":  "soulon-wallet",
+                      "modulePath":  "D:\\soulon_wallet\\soulon-wallet",
+                      "gate":  "check",
+                      "command":  "npm run check",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  3103,
+                      "startedAt":  "2026-03-05T21:30:51.4451594+08:00",
+                      "endedAt":  "2026-03-05T21:30:54.5483766+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\logs\\soulon-wallet-check-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\logs\\soulon-wallet-check-stderr.log",
+                      "stdoutTail":  "\r\n\u003e soulon-wallet@0.1.0 check\r\n\u003e tsc -p tsconfig.json --noEmit\r\n",
+                      "stderrTail":  ""
+                  },
+                  {
+                      "module":  "soulon-wallet",
+                      "modulePath":  "D:\\soulon_wallet\\soulon-wallet",
+                      "gate":  "test_unit",
+                      "command":  "npm run test:unit",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  4091,
+                      "startedAt":  "2026-03-05T21:30:54.5688479+08:00",
+                      "endedAt":  "2026-03-05T21:30:58.6602843+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\logs\\soulon-wallet-test_unit-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\logs\\soulon-wallet-test_unit-stderr.log",
+                      "stdoutTail":  "鉁?sendNativeToken: 浣跨敤 signAndBroadcast 鎻愪氦绛惧悕骞挎挱 (0.5682ms)\r\n鉁?sendNativeTokenAndConfirm: 杩斿洖浜ゆ槗鍝堝笇鍜岀‘璁ょ姸鎬?(4.5665ms)\r\n鉁?broadcastWithRetry: 鑺傜偣寮傚父鍙噸璇曞苟鏈€缁堟垚鍔?(4.4385ms)\r\n鉁?broadcastWithRetry: 闈炲彲閲嶈瘯寮傚父鎶涘嚭鏍囧噯閿欒 (1.0547ms)\r\n鉁?mapTxError: 鏈煡 code 鎸夋棩蹇楁槧灏?sequence 閿欒 (0.3036ms)\r\n鉁?createWalletFromMnemonic: 鍙垱寤鸿处鎴峰苟杩斿洖鍖归厤鍓嶇紑鍦板潃 (53.4291ms)\r\n鉁?createWalletFromMnemonicWithPath: 涓嶅悓鍦板潃绱㈠紩浼氭淳鐢熶笉鍚屽湴鍧€ (14.3727ms)\r\n鉁?deriveHdPath: 鎸夎緭鍏ョ敓鎴愭爣鍑?BIP44 璺緞 (0.1741ms)\r\n鉁?deriveAddressFromMnemonic: 杩斿洖鍙牎楠岀殑娲剧敓鍦板潃 (3.9896ms)\r\n鉁?createWalletFromMnemonic: 闈炴硶鍔╄璇嶉暱搴﹁繑鍥炴爣鍑嗛敊璇?(0.7008ms)\r\n鉁?createWalletFromMnemonicWithPath: 闈炴硶娲剧敓鍙傛暟杩斿洖鏍囧噯閿欒 (0.2232ms)\r\n鉁?createIdentityManager: 浠呯粰鍦板潃绱㈠紩浣嗙己灏?coinType 鏃堕樆鏂鍏?(0.2734ms)\r\n鈩?tests 26\r\n鈩?suites 0\r\n鈩?pass 26\r\n鈩?fail 0\r\n鈩?cancelled 0\r\n鈩?skipped 0\r\n鈩?todo 0\r\n鈩?duration_ms 940.0212",
+                      "stderrTail":  ""
+                  },
+                  {
+                      "module":  "soulon-deep-chain",
+                      "modulePath":  "D:\\soulon_wallet\\soulon-deep-chain",
+                      "gate":  "go_test",
+                      "command":  "go test ./...",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  2072,
+                      "startedAt":  "2026-03-05T21:30:58.6658892+08:00",
+                      "endedAt":  "2026-03-05T21:31:00.7378893+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\logs\\soulon-deep-chain-go_test-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.0.0\\20260305-213039\\logs\\soulon-deep-chain-go_test-stderr.log",
+                      "stdoutTail":  "ok  \tsoulon-deep-chain/app\t(cached)\r\n?   \tsoulon-deep-chain/cmd/soulond\t[no test files]\r\nok  \tsoulon-deep-chain/x/bank\t(cached)\r\nok  \tsoulon-deep-chain/x/distribution\t(cached)\r\nok  \tsoulon-deep-chain/x/gov\t(cached)\r\nok  \tsoulon-deep-chain/x/staking\t(cached)",
+                      "stderrTail":  ""
+                  }
+              ],
+    "failedDetails":  [
+
+                      ]
+}

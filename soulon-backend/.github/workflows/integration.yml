@@ -1,0 +1,24 @@
+name: integration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "internal/indexer/**"
+      - "docker-compose.integration.yml"
+      - "scripts/run-integration.ps1"
+      - ".github/workflows/integration.yml"
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+      - name: Run unit tests
+        run: go test ./...
+      - name: Run integration tests
+        shell: pwsh
+        run: ./scripts/run-integration.ps1

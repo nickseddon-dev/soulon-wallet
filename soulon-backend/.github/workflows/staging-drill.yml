@@ -1,0 +1,44 @@
+name: staging-drill
+
+on:
+  workflow_dispatch:
+    inputs:
+      iterations:
+        description: "Chaos iterations"
+        required: false
+        default: "2"
+      trendWindow:
+        description: "Trend window"
+        required: false
+        default: "5"
+
+jobs:
+  drill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+      - name: Run staging drill
+        shell: pwsh
+        run: ./scripts/run-staging-drill.ps1 -Iterations ${{ github.event.inputs.iterations || '2' }} -TrendWindow ${{ github.event.inputs.trendWindow || '5' }}
+      - name: Show drill summary
+        if: always()
+        shell: pwsh
+        run: |
+          $file = Get-ChildItem -Path reports/staging -Filter "staging-drill-*.md" -File | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+          if (-not $file) {
+            "## Staging Drill`n`n- No drill report found." | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+            exit 0
+          }
+          "## Staging Drill`n`n- report: $($file.Name)" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+      - name: Upload drill artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: staging-drill-artifacts
+          path: |
+            reports/chaos/*
+            reports/staging/*
+            deploy/monitoring/generated/*

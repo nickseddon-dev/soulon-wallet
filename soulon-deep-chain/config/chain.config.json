@@ -1,0 +1,20 @@
+{
+  "chainName": "soulon-deep-chain",
+  "chainId": "soulon-testnet-1",
+  "bech32Prefix": "soulon",
+  "coinDenom": "usoul",
+  "bondDenom": "usoul",
+  "coinType": 118,
+  "blockTimeSeconds": 3,
+  "minimumGasPrice": "0.025usoul",
+  "consensus": {
+    "engine": "cometbft",
+    "maxValidators": 100,
+    "unbondingTimeHours": 504
+  },
+  "api": {
+    "grpc": "http://127.0.0.1:9090",
+    "rpc": "http://127.0.0.1:26657",
+    "rest": "http://127.0.0.1:1317"
+  }
+}

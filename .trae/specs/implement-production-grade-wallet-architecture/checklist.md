@@ -1,0 +1,11 @@
+- [x] Flutter 页面已从 Demo Store 迁移为真实数据分层
+- [x] 资产与交易流程已使用真实 API 且支持失败重试
+- [x] 质押与治理流程已使用真实 API 且状态可追踪
+- [x] Android Keystore 与 iOS Keychain 已接入并可验证
+- [x] PIN 与生物识别双因子已覆盖资产变更操作
+- [x] WalletConnect 与 SuggestChain 真会话流程可用
+- [x] BIP-21 扫码支付已联动交易构建与校验
+- [x] IBC 状态追踪与 Reorg 自动刷新机制可用
+- [x] 多签 M-of-N 审批、离线签名导入与提交回写可用
+- [x] 统一门禁、性能安全基线、回滚演练全部通过
+- [x] 验收报告与审计归档已生成且可追溯

@@ -1,0 +1,49 @@
+:root {
+  --token-color-background: #0e0f14;
+  --token-color-surface: #14151b;
+  --token-color-surface-subtle: #202127;
+
+  --token-color-primary: #ffffff;
+  --token-color-primary-pressed: #f4f4f6;
+  --token-color-primary-text: #14151b;
+
+  --token-color-accent: #4c94ff;
+
+  --token-color-border: #202127;
+  --token-color-border-light: rgba(255, 255, 255, 0.15);
+
+  --token-color-success: #00c278;
+  --token-color-warning: #efa411;
+  --token-color-danger: #ff575a;
+
+  --token-color-text-primary: #f4f4f6;
+  --token-color-text-secondary: #969faf;
+  --token-color-text-muted: #5d606f;
+
+  --token-font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --token-font-size-title-lg: 22px;
+  --token-font-size-title-md: 16px;
+  --token-font-size-body: 14px;
+  --token-font-size-label: 12px;
+
+  --token-space-xs: 4px;
+  --token-space-sm: 8px;
+  --token-space-md: 12px;
+  --token-space-lg: 16px;
+  --token-space-xl: 24px;
+  --token-space-xxl: 32px;
+
+  --token-radius-sm: 8px;
+  --token-radius-md: 12px;
+  --token-radius-lg: 16px;
+  --token-radius-pill: 999px;
+
+  --token-shadow-surface: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --token-shadow-card: 0 6px 18px rgba(0, 0, 0, 0.28);
+
+  --token-motion-fast: 120ms;
+  --token-motion-normal: 200ms;
+  --token-motion-slow: 320ms;
+  --token-motion-ease: ease-out;
+  --token-motion-emphasized: cubic-bezier(0.2, 0, 0, 1);
+}

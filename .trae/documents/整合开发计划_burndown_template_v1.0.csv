@@ -1,0 +1,16 @@
+Sprint,StartDate,EndDate,PlannedStoryPoints,ActualCompletedStoryPoints,RemainingStoryPoints,IdealRemainingPoints,BugOpened,BugClosed,ScopeChangePoints,Velocity,ReleaseRisk
+Sprint-01,2026-03-09,2026-03-20,80,0,1345,1345,0,0,0,0,Low
+Sprint-02,2026-03-23,2026-04-03,90,0,0,1249,0,0,0,0,Low
+Sprint-03,2026-04-06,2026-04-17,95,0,0,1153,0,0,0,0,Medium
+Sprint-04,2026-04-20,2026-05-01,100,0,0,1057,0,0,0,0,Medium
+Sprint-05,2026-05-04,2026-05-15,105,0,0,961,0,0,0,0,Medium
+Sprint-06,2026-05-18,2026-05-29,110,0,0,864,0,0,0,0,Medium
+Sprint-07,2026-06-01,2026-06-12,110,0,0,768,0,0,0,0,High
+Sprint-08,2026-06-15,2026-06-26,105,0,0,672,0,0,0,0,High
+Sprint-09,2026-06-29,2026-07-10,100,0,0,576,0,0,0,0,High
+Sprint-10,2026-07-13,2026-07-24,95,0,0,480,0,0,0,0,High
+Sprint-11,2026-07-27,2026-08-07,90,0,0,384,0,0,0,0,High
+Sprint-12,2026-08-10,2026-08-21,85,0,0,288,0,0,0,0,High
+Sprint-13,2026-08-24,2026-09-04,80,0,0,192,0,0,0,0,Medium
+Sprint-14,2026-09-07,2026-09-18,60,0,0,96,0,0,0,0,Medium
+Sprint-15,2026-09-21,2026-09-25,40,0,0,0,0,0,0,0,Low

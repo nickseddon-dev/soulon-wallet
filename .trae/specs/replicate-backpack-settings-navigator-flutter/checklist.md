@@ -1,0 +1,7 @@
+- [x] Settings Root 信息架构与 Backpack 对齐，入口齐全可点击
+- [x] Wallets 页面族所有页面可达且返回路径正确
+- [x] Your Account 页面族所有页面可达，敏感操作先警告后确认
+- [x] Preferences 页面族所有页面可达，选择/开关可修改并保持状态
+- [x] Blockchain Preferences 子页面族可达（RPC/Commitment/Explorer/Custom RPC）
+- [x] About 页面可达且信息块布局与风格一致
+- [x] flutter analyze 无阻断错误，Flutter Web 可正常打开并手工走通

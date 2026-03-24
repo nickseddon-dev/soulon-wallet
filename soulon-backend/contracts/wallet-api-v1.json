@@ -1,0 +1,115 @@
+{
+  "version": "v1.4.0",
+  "frozen": true,
+  "frozenAt": "2026-03-05",
+  "errorModel": {
+    "format": {
+      "code": "string",
+      "message": "string",
+      "status": "number",
+      "retryable": "boolean"
+    },
+    "codes": [
+      "INVALID_ARGUMENT",
+      "INSUFFICIENT_FUNDS",
+      "OUT_OF_GAS",
+      "INVALID_SEQUENCE",
+      "UNAUTHORIZED",
+      "CHAIN_UNAVAILABLE",
+      "NOT_FOUND",
+      "METHOD_NOT_ALLOWED",
+      "TX_REJECTED",
+      "INTERNAL_ERROR"
+    ]
+  },
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/v1/health",
+      "description": "API health check"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/indexer/events",
+      "description": "Indexer events query",
+      "query": [
+        "limit",
+        "offset",
+        "order",
+        "type",
+        "minHeight",
+        "maxHeight"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/indexer/state",
+      "description": "Indexer state query"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chain/staking/validators",
+      "description": "Query bonded validators from chain REST"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chain/staking/delegations/{delegatorAddress}",
+      "description": "Query delegations by delegator address"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chain/distribution/delegators/{delegatorAddress}/rewards",
+      "description": "Query reward summary by delegator address"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chain/gov/proposals",
+      "description": "Query governance proposals list"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chain/gov/proposals/{proposalId}",
+      "description": "Query governance proposal detail"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chain/gov/proposals/{proposalId}/votes",
+      "description": "Query governance proposal votes"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chain/txs/{txHash}",
+      "description": "Query chain transaction by hash"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/chain/txs",
+      "description": "Broadcast chain transaction"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/signature/challenge",
+      "description": "Create signature challenge for login authorization"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/signature/confirm",
+      "description": "Confirm signature and issue authorization result"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications",
+      "description": "Query notification messages"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/stream",
+      "description": "Subscribe notification stream in SSE"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/notifications/webhook",
+      "description": "Receive notification webhook from indexer"
+    }
+  ]
+}

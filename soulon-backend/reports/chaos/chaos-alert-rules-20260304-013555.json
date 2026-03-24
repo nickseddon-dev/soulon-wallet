@@ -1,0 +1,34 @@
+﻿{
+    "globalRules":  [
+                        {
+                            "name":  "chaos_error_rate_pct_high",
+                            "expr":  "chaos_fail_rate_pct \u003e 5",
+                            "threshold":  5,
+                            "unit":  "percent",
+                            "severity":  "warning",
+                            "window":  "5m",
+                            "description":  "Chaos error rate exceeds recommended threshold"
+                        },
+                        {
+                            "name":  "chaos_average_duration_ms_high",
+                            "expr":  "chaos_average_duration_ms \u003e 2000",
+                            "threshold":  2000,
+                            "unit":  "ms",
+                            "severity":  "warning",
+                            "window":  "5m",
+                            "description":  "Chaos average duration exceeds recommended threshold"
+                        },
+                        {
+                            "name":  "chaos_consecutive_failures_high",
+                            "expr":  "chaos_consecutive_failures \u003e 2",
+                            "threshold":  2,
+                            "unit":  "count",
+                            "severity":  "critical",
+                            "window":  "10m",
+                            "description":  "Chaos consecutive failures exceed recommended threshold"
+                        }
+                    ],
+    "scenarioRules":  [
+
+                      ]
+}

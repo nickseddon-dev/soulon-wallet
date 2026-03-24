@@ -1,0 +1,149 @@
+﻿{
+    "generatedAt":  "2026-03-06T22:12:52.4017697+08:00",
+    "templateVersion":  "v2",
+    "milestone":  "Wallet-Production-Architecture",
+    "version":  "v2.2.0",
+    "overallStatus":  "pass",
+    "totalModules":  3,
+    "failedModules":  0,
+    "totalGates":  7,
+    "failedGates":  0,
+    "reportPath":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\v2-acceptance-summary.md",
+    "archivePath":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202",
+    "modules":  [
+                    {
+                        "module":  "soulon-backend",
+                        "modulePath":  "D:\\soulon_wallet\\soulon-backend",
+                        "totalGates":  2,
+                        "passedGates":  2,
+                        "failedGates":  0,
+                        "status":  "pass"
+                    },
+                    {
+                        "module":  "wallet-app-flutter",
+                        "modulePath":  "D:\\soulon_wallet\\wallet-app-flutter",
+                        "totalGates":  2,
+                        "passedGates":  2,
+                        "failedGates":  0,
+                        "status":  "pass"
+                    },
+                    {
+                        "module":  "soulon-wallet",
+                        "modulePath":  "D:\\soulon_wallet\\soulon-wallet",
+                        "totalGates":  3,
+                        "passedGates":  3,
+                        "failedGates":  0,
+                        "status":  "pass"
+                    }
+                ],
+    "gates":  [
+                  {
+                      "module":  "soulon-backend",
+                      "modulePath":  "D:\\soulon_wallet\\soulon-backend",
+                      "gate":  "go_test",
+                      "command":  "go test ./...",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  2086,
+                      "startedAt":  "2026-03-06T22:12:02.4267957+08:00",
+                      "endedAt":  "2026-03-06T22:12:04.5124982+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\soulon-backend-go_test-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\soulon-backend-go_test-stderr.log",
+                      "stdoutTail":  "?   \tsoulon-backend/cmd/api\t[no test files]\r\n?   \tsoulon-backend/cmd/gateway\t[no test files]\r\n?   \tsoulon-backend/cmd/indexer\t[no test files]\r\nok  \tsoulon-backend/internal/api\t(cached)\r\nok  \tsoulon-backend/internal/config\t(cached)\r\nok  \tsoulon-backend/internal/gateway\t(cached)\r\nok  \tsoulon-backend/internal/indexer\t(cached)",
+                      "stderrTail":  ""
+                  },
+                  {
+                      "module":  "soulon-backend",
+                      "modulePath":  "D:\\soulon_wallet\\soulon-backend",
+                      "gate":  "perf_baseline_rollback",
+                      "command":  "powershell -ExecutionPolicy Bypass -File ./scripts/check-release-readiness.ps1",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  1075,
+                      "startedAt":  "2026-03-06T22:12:04.5383542+08:00",
+                      "endedAt":  "2026-03-06T22:12:05.6128716+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\soulon-backend-perf_baseline_rollback-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\soulon-backend-perf_baseline_rollback-stderr.log",
+                      "stdoutTail":  "Release readiness check summary generated: D:\\soulon_wallet\\soulon-backend\\reports\\release-readiness\\release-readiness-check-20260306-221205.md",
+                      "stderrTail":  ""
+                  },
+                  {
+                      "module":  "wallet-app-flutter",
+                      "modulePath":  "D:\\soulon_wallet\\wallet-app-flutter",
+                      "gate":  "flutter_analyze",
+                      "command":  "flutter analyze --no-fatal-infos",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  16184,
+                      "startedAt":  "2026-03-06T22:12:05.6269329+08:00",
+                      "endedAt":  "2026-03-06T22:12:21.8109711+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\wallet-app-flutter-flutter_analyze-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\wallet-app-flutter-flutter_analyze-stderr.log",
+                      "stdoutTail":  "\r\n   info - \u0027value\u0027 is deprecated and shouldn\u0027t be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\\pages\\governance_vote_page.dart:129:23 - deprecated_member_use\r\n   info - \u0027value\u0027 is deprecated and shouldn\u0027t be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\\pages\\ibc_transfer_tracking_page.dart:78:23 - deprecated_member_use\r\n   info - \u0027value\u0027 is deprecated and shouldn\u0027t be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\\pages\\ibc_transfer_tracking_page.dart:98:23 - deprecated_member_use\r\n   info - Use \u0027const\u0027 with the constructor to improve performance - lib\\pages\\identity_backup_verify_page.dart:167:15 - prefer_const_constructors\r\n   info - Use \u0027const\u0027 with the constructor to improve performance - lib\\pages\\identity_backup_verify_page.dart:169:24 - prefer_const_constructors\r\n   info - \u0027withOpacity\u0027 is deprecated and shouldn\u0027t be used. Use .withValues() to avoid precision loss - lib\\pages\\identity_backup_verify_page.dart:201:22 - deprecated_member_use\r\n   info - \u0027withOpacity\u0027 is deprecated and shouldn\u0027t be used. Use .withValues() to avoid precision loss - lib\\pages\\motion_showcase_page.dart:34:66 - deprecated_member_use\r\n   info - Use \u0027const\u0027 with the constructor to improve performance - lib\\pages\\notification_center_page.dart:60:21 - prefer_const_constructors\r\n   info - Use \u0027const\u0027 with the constructor to improve performance - lib\\pages\\notification_center_page.dart:61:21 - prefer_const_constructors\r\n   info - \u0027value\u0027 is deprecated and shouldn\u0027t be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\\pages\\offline_signature_import_page.dart:88:23 - deprecated_member_use\r\n   info - \u0027value\u0027 is deprecated and shouldn\u0027t be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\\pages\\pin_biometric_confirm_page.dart:74:23 - deprecated_member_use\r\n   info - \u0027value\u0027 is deprecated and shouldn\u0027t be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\\pages\\pin_biometric_confirm_page.dart:110:23 - deprecated_member_use\r\n   info - \u0027value\u0027 is deprecated and shouldn\u0027t be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\\pages\\staking_flow_page.dart:75:23 - deprecated_member_use\r\n   info - \u0027value\u0027 is deprecated and shouldn\u0027t be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\\pages\\staking_flow_page.dart:92:23 - deprecated_member_use\r\n   info - \u0027value\u0027 is deprecated and shouldn\u0027t be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\\pages\\staking_flow_page.dart:111:25 - deprecated_member_use\r\n   info - Use \u0027const\u0027 with the constructor to improve performance - lib\\pages\\walletconnect_session_page.dart:57:27 - prefer_const_constructors\r\n   info - Use \u0027const\u0027 with the constructor to improve performance - lib\\pages\\walletconnect_session_page.dart:58:27 - prefer_const_constructors\r\n   info - Use \u0027const\u0027 for final variables initialized to a constant value - lib\\state\\transaction_demo_store.dart:758:9 - prefer_const_declarations\r\n",
+                      "stderrTail":  "18 issues found. (ran in 12.8s)"
+                  },
+                  {
+                      "module":  "wallet-app-flutter",
+                      "modulePath":  "D:\\soulon_wallet\\wallet-app-flutter",
+                      "gate":  "flutter_test",
+                      "command":  "flutter test",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  11148,
+                      "startedAt":  "2026-03-06T22:12:21.8322000+08:00",
+                      "endedAt":  "2026-03-06T22:12:32.9799438+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\wallet-app-flutter-flutter_test-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\wallet-app-flutter-flutter_test-stderr.log",
+                      "stdoutTail":  "00:00 +0: loading D:/soulon_wallet/wallet-app-flutter/test/motion_tokens_test.dart\r\n00:00 +0: D:/soulon_wallet/wallet-app-flutter/test/motion_tokens_test.dart: motion tokens are ordered by duration\r\n00:00 +1: D:/soulon_wallet/wallet-app-flutter/test/security_confirm_store_test.dart: 鏈畬鎴愮敓鐗╄瘑鍒椂鎷掔粷楂橀闄╃‘璁?00:00 +2: D:/soulon_wallet/wallet-app-flutter/test/security_confirm_store_test.dart: 瀹屾垚鍙屽洜瀛愬悗鐢熸垚鎺堟潈缁撴灉涓庡璁′簨浠?00:01 +3: D:/soulon_wallet/wallet-app-flutter/test/security_confirm_store_test.dart: 瀹屾垚鍙屽洜瀛愬悗鐢熸垚鎺堟潈缁撴灉涓庡璁′簨浠?00:01 +4: D:/soulon_wallet/wallet-app-flutter/test/task3_interop_realflow_test.dart: reorg 鍒锋柊浼氫繚鎸佸凡缁戝畾浜ゆ槗鍝堝笇\r\n00:01 +5: D:/soulon_wallet/wallet-app-flutter/test/task3_interop_realflow_test.dart: reorg 鍒锋柊浼氫繚鎸佸凡缁戝畾浜ゆ槗鍝堝笇\r\n00:02 +6: D:/soulon_wallet/wallet-app-flutter/test/task3_interop_realflow_test.dart: reorg 鍒锋柊浼氫繚鎸佸凡缁戝畾浜ゆ槗鍝堝笇\r\n00:02 +7: D:/soulon_wallet/wallet-app-flutter/test/task3_interop_realflow_test.dart: reorg 鍒锋柊浼氫繚鎸佸凡缁戝畾浜ゆ槗鍝堝笇\r\n00:02 +8: D:/soulon_wallet/wallet-app-flutter/test/task3_interop_realflow_test.dart: reorg 鍒锋柊浼氫繚鎸佸凡缁戝畾浜ゆ槗鍝堝笇\r\n00:02 +9: D:/soulon_wallet/wallet-app-flutter/test/task3_interop_realflow_test.dart: reorg 鍒锋柊浼氫繚鎸佸凡缁戝畾浜ゆ槗鍝堝笇\r\n00:02 +10: D:/soulon_wallet/wallet-app-flutter/test/task3_interop_realflow_test.dart: reorg 鍒锋柊浼氫繚鎸佸凡缁戝畾浜ゆ槗鍝堝笇\r\n00:03 +11: D:/soulon_wallet/wallet-app-flutter/test/task7_page_interaction_test.dart: staking flow page can execute and render chain result\r\n00:04 +12: D:/soulon_wallet/wallet-app-flutter/test/task7_page_interaction_test.dart: ibc page can execute transfer and complete tracking\r\n00:04 +13: D:/soulon_wallet/wallet-app-flutter/test/wallet_app_smoke_test.dart: wallet app renders foundation page\r\n00:05 +14: All tests passed!",
+                      "stderrTail":  ""
+                  },
+                  {
+                      "module":  "soulon-wallet",
+                      "modulePath":  "D:\\soulon_wallet\\soulon-wallet",
+                      "gate":  "check",
+                      "command":  "npm run check",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  3144,
+                      "startedAt":  "2026-03-06T22:12:33.0033041+08:00",
+                      "endedAt":  "2026-03-06T22:12:36.1468685+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\soulon-wallet-check-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\soulon-wallet-check-stderr.log",
+                      "stdoutTail":  "\r\n\u003e soulon-wallet@0.1.0 check\r\n\u003e tsc -p tsconfig.json --noEmit\r\n",
+                      "stderrTail":  ""
+                  },
+                  {
+                      "module":  "soulon-wallet",
+                      "modulePath":  "D:\\soulon_wallet\\soulon-wallet",
+                      "gate":  "test_unit",
+                      "command":  "npm run test:unit",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  5109,
+                      "startedAt":  "2026-03-06T22:12:36.1514978+08:00",
+                      "endedAt":  "2026-03-06T22:12:41.2603515+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\soulon-wallet-test_unit-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\soulon-wallet-test_unit-stderr.log",
+                      "stdoutTail":  "鉁?sendNativeTokenAndConfirm: 杩斿洖浜ゆ槗鍝堝笇鍜岀‘璁ょ姸鎬?(3.2484ms)\r\n鉁?broadcastWithRetry: 鑺傜偣寮傚父鍙噸璇曞苟鏈€缁堟垚鍔?(2.9436ms)\r\n鉁?broadcastWithRetry: 闈炲彲閲嶈瘯寮傚父鎶涘嚭鏍囧噯閿欒 (1.0798ms)\r\n鉁?mapTxError: 鏈煡 code 鎸夋棩蹇楁槧灏?sequence 閿欒 (0.2886ms)\r\n鉁?mapTxError: 鍙傛暟闈炴硶鏄犲皠 INVALID_ARGUMENT (0.1813ms)\r\n鉁?createWalletFromMnemonic: 鍙垱寤鸿处鎴峰苟杩斿洖鍖归厤鍓嶇紑鍦板潃 (56.2238ms)\r\n鉁?createWalletFromMnemonicWithPath: 涓嶅悓鍦板潃绱㈠紩浼氭淳鐢熶笉鍚屽湴鍧€ (15.4293ms)\r\n鉁?deriveHdPath: 鎸夎緭鍏ョ敓鎴愭爣鍑?BIP44 璺緞 (0.178ms)\r\n鉁?deriveAddressFromMnemonic: 杩斿洖鍙牎楠岀殑娲剧敓鍦板潃 (4.615ms)\r\n鉁?createWalletFromMnemonic: 闈炴硶鍔╄璇嶉暱搴﹁繑鍥炴爣鍑嗛敊璇?(0.7692ms)\r\n鉁?createWalletFromMnemonicWithPath: 闈炴硶娲剧敓鍙傛暟杩斿洖鏍囧噯閿欒 (0.2345ms)\r\n鉁?createIdentityManager: 浠呯粰鍦板潃绱㈠紩浣嗙己灏?coinType 鏃堕樆鏂鍏?(0.2854ms)\r\n鈩?tests 29\r\n鈩?suites 0\r\n鈩?pass 29\r\n鈩?fail 0\r\n鈩?cancelled 0\r\n鈩?skipped 0\r\n鈩?todo 0\r\n鈩?duration_ms 2149.0805",
+                      "stderrTail":  ""
+                  },
+                  {
+                      "module":  "soulon-wallet",
+                      "modulePath":  "D:\\soulon_wallet\\soulon-wallet",
+                      "gate":  "e2e_regression",
+                      "command":  "npm run gate:e2e-regression",
+                      "status":  "pass",
+                      "exitCode":  0,
+                      "durationMs":  11130,
+                      "startedAt":  "2026-03-06T22:12:41.2650545+08:00",
+                      "endedAt":  "2026-03-06T22:12:52.3954107+08:00",
+                      "stdoutLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\soulon-wallet-e2e_regression-stdout.log",
+                      "stderrLog":  "D:\\soulon_wallet\\deploy\\reports\\p2-acceptance\\archive\\v2.2.0\\20260306-221202\\logs\\soulon-wallet-e2e_regression-stderr.log",
+                      "stdoutTail":  "\r\n\r\n\u003e soulon-wallet@0.1.0 build\r\n\u003e tsc -p tsconfig.json\r\n\r\n閽卞寘娴嬭瘯缃?E2E 寮€濮?绂荤嚎妯″紡閫氳繃: address=soulon19rl4cm2hmr8afy4kldpxz3fka4jguq0awlglmh, hash=OFFLINE_E2E_HASH\r\n閽卞寘娴嬭瘯缃?E2E 瀹屾垚\r\nRelease gate: offline business regression\r\n\r\n\u003e soulon-wallet@0.1.0 test:business\r\n\u003e npm run build \u0026\u0026 node ./scripts/wallet-business-integration.mjs\r\n\r\n\r\n\u003e soulon-wallet@0.1.0 build\r\n\u003e tsc -p tsconfig.json\r\n\r\n閽卞寘涓氬姟闆嗘垚娴嬭瘯寮€濮?杞处閾捐矾闆嗘垚娴嬭瘯閫氳繃\r\n璐ㄦ娂涓庢不鐞嗛摼璺泦鎴愭祴璇曢€氳繃\r\n宸茶烦杩囩綉缁滄煡璇㈤泦鎴愭祴璇曪紙SOULON_SKIP_NETWORK_TEST=true/1/yes锛?閽卞寘涓氬姟闆嗘垚娴嬭瘯瀹屾垚\r\nRelease gate: e2e regression passed",
+                      "stderrTail":  ""
+                  }
+              ],
+    "failedDetails":  [
+
+                      ]
+}

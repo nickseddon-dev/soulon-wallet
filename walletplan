@@ -1,0 +1,48 @@
+一个基于 Cosmos SDK 开发的专业级区块链钱包，其功能矩阵应涵盖从底层密钥管理、核心链上操作到高级生态互操作性的全方位需求。以下是需要实现的核心功能：
+
+1. 身份与密钥管理 (Identity & Key Management)
+多助记词生成与恢复 (BIP-39)： 支持生成 12 或 24 位符合行业标准的助记词，并利用加密安全的伪随机数生成器（CSPRNG）确保熵的安全性。
+
+分层确定性账户 (BIP-44)： 支持基于派生路径管理多个账户。对于自建链，应使用 SLIP-0044 注册的唯一 coin_type。
+
+硬件加固存储： 移动端应强制集成 Android Keystore 或 iOS Keychain，将私钥保存在 TEE（可信执行环境）或 SE（安全元件）中，确保密钥不可导出 。
+
+冷热钱包隔离： 支持观察者模式（Watch-only），允许用户在不暴露私钥的情况下查看资产状态 。
+
+2. 核心交易与资产操作 (Transactions & Assets)
+资产看板与余额查询： 实时展示原生代币（Native Token）及 CW20/IBC 代币的余额。集成法币转换（USD/CNY）实时折算。
+
+交易生命周期管理：
+
+构建 (Build)： 自动获取账户最新的 Sequence 和 AccountNumber 以防止重放攻击。
+
+仿真 (Simulation)： 通过节点 RPC 调用 simulate 接口动态估算 Gas 消耗并提供分级（低、中、高）费率建议。
+
+签名 (Sign)： 支持 SIGN_MODE_DIRECT（二进制高效模式）和 2026 年新标准的 SIGN_MODE_TEXTUAL（人类可读的硬件签名模式）。
+
+交易历史与记录导出： 记录完整的交易哈希、状态和手续费，并支持导出为 CSV、PDF 或 JSON 格式，方便用户进行财务审计或税务申报 。
+
+3. Cosmos 生态特有功能 (Interchain Features)
+质押管理 (Staking)： 提供验证人列表查询，支持一键质押（Delegate）、解抵押（Unbond）、领取收益（Claim Rewards）及复投（Redelegate）。
+
+链上治理 (Governance)： 允许用户查看社区提案详情，并直接在钱包内进行投票选择（Yes/No/Abstain/Veto）。
+
+IBC 跨链传输： 实现基于 ICS-20 标准的跨链资产转移，支持选择目标链通道（Channel）并追踪跨链数据包状态。
+
+4. 安全、UX 与 DApp 交互
+多重认证与生物识别： 支持 FaceID、指纹识别及 6 位数字 PIN 码作为二级验证，任何资产变动操作均需二次确认。
+
+生态互联：
+
+WalletConnect： 集成通用协议，支持通过移动端钱包扫码授权 Web 端 DApp 。
+
+一键加链 (SuggestChain)： 实现 Keplr 类似的接口，当用户访问 DApp 时，自动弹出添加自建链网络参数的申请。
+
+扫码支付： 支持 BIP-21 URI 格式的二维码扫描，自动解析收款地址、金额及 Memo 。
+
+防灾设计： 提供助记词验证流程（要求用户按序点击单词确认备份），并具备检测链重组（Reorg）后自动刷新交易状态的逻辑 。
+
+5. 高级维护与通知
+实时推送： 通过 Webhooks 或索引器捕获链上余额变动、提案上线或交易打包结果，并实时推送到用户手机 。
+
+多签支持： 针对企业级用户，提供基于 Cosmos x/authz 或离线多签交易构造的功能，支持 M-of-N 签名策略。

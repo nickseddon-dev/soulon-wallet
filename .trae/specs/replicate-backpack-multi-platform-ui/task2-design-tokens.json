@@ -1,0 +1,53 @@
+{
+  "color": {
+    "primary": "#5B8CFF",
+    "primaryPressed": "#3F6FE0",
+    "accent": "#28D5A4",
+    "background": "#0E1220",
+    "surface": "#171D2E",
+    "surfaceSubtle": "#1E253A",
+    "border": "#2E3855",
+    "success": "#32C98A",
+    "warning": "#FFB84D",
+    "danger": "#FF5A7A",
+    "textPrimary": "#F4F7FF",
+    "textSecondary": "#9DA8C7",
+    "textMuted": "#7F8AAF"
+  },
+  "typography": {
+    "fontFamily": "Inter",
+    "sizeTitleLarge": 24,
+    "sizeTitleMedium": 18,
+    "sizeBody": 14,
+    "sizeLabel": 12,
+    "weightRegular": 400,
+    "weightMedium": 500,
+    "weightSemibold": 600,
+    "weightBold": 700
+  },
+  "spacing": {
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "xxl": 32
+  },
+  "radius": {
+    "sm": 10,
+    "md": 14,
+    "lg": 16,
+    "pill": 999
+  },
+  "shadow": {
+    "surface": "0 18px 40px rgba(2, 6, 23, 0.45)",
+    "card": "0 8px 24px rgba(6, 10, 20, 0.28)"
+  },
+  "motion": {
+    "fastMs": 120,
+    "normalMs": 200,
+    "slowMs": 320,
+    "curveStandard": "ease-out",
+    "curveEmphasized": "cubic-bezier(0.2, 0, 0, 1)"
+  }
+}

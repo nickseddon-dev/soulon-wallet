@@ -1,0 +1,37 @@
+﻿groups:
+  - name: chaos-generated-rules
+    rules:
+      - alert: chaos_error_rate_pct_high
+        expr: chaos_fail_rate_pct > 5
+        for: 5m
+        labels:
+          severity: warning
+          source: chaos
+        annotations:
+          summary: Chaos error rate exceeds recommended threshold
+          threshold: "5"
+          unit: "percent"
+      - alert: chaos_average_duration_ms_high
+        expr: chaos_average_duration_ms > 2000
+        for: 5m
+        labels:
+          severity: warning
+          source: chaos
+        annotations:
+          summary: Chaos average duration exceeds recommended threshold
+          threshold: "2000"
+          unit: "ms"
+      - alert: chaos_consecutive_failures_high
+        expr: chaos_consecutive_failures > 2
+        for: 10m
+        labels:
+          severity: critical
+          source: chaos
+        annotations:
+          summary: Chaos consecutive failures exceed recommended threshold
+          threshold: "2"
+          unit: "count"
+
+# rollback drill invalid append
+- invalid: true
+

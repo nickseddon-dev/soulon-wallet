@@ -1,0 +1,8 @@
+{
+  "delegatorAddress": "soulon1x9j33g5z6vxy8y5g4z2n6f0a9y8a5y7h3k7p9",
+  "validatorAddress": "soulonvaloper1x9j33g5z6vxy8y5g4z2n6f0a9y8a5y7h4q9",
+  "voterAddress": "soulon1x9j33g5z6vxy8y5g4z2n6f0a9y8a5y7h3k7p9",
+  "proposalId": "1",
+  "delegateAmount": "1000",
+  "undelegateAmount": "500"
+}

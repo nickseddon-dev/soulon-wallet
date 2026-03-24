@@ -1,0 +1,59 @@
+{
+  "templateVersion": "v2",
+  "milestone": "P2-Complete",
+  "version": "v2.0.0",
+  "modules": [
+    {
+      "name": "soulon-backend",
+      "path": "soulon-backend",
+      "gates": [
+        {
+          "name": "go_test",
+          "command": "go test ./..."
+        },
+        {
+          "name": "perf_baseline_rollback",
+          "command": "powershell -ExecutionPolicy Bypass -File ./scripts/check-release-readiness.ps1"
+        }
+      ]
+    },
+    {
+      "name": "wallet-app",
+      "path": "wallet-app",
+      "gates": [
+        {
+          "name": "validate",
+          "command": "npm run validate"
+        }
+      ]
+    },
+    {
+      "name": "soulon-wallet",
+      "path": "soulon-wallet",
+      "gates": [
+        {
+          "name": "check",
+          "command": "npm run check"
+        },
+        {
+          "name": "test_unit",
+          "command": "npm run test:unit"
+        },
+        {
+          "name": "e2e_regression",
+          "command": "npm run gate:e2e-regression"
+        }
+      ]
+    },
+    {
+      "name": "soulon-deep-chain",
+      "path": "soulon-deep-chain",
+      "gates": [
+        {
+          "name": "go_test",
+          "command": "go test ./..."
+        }
+      ]
+    }
+  ]
+}

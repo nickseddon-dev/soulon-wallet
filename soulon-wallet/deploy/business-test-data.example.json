@@ -1,0 +1,11 @@
+{
+  "delegatorAddress": "soulon1x9j33g5z6vxy8y5g4z2n6f0a9y8a5y7h3k7p9",
+  "transferFromAddress": "soulon1x9j33g5z6vxy8y5g4z2n6f0a9y8a5y7h3k7p9",
+  "transferToAddress": "soulon1h7k9g6p4w5x9v8n3m2t6y4u1q9s8r7l5d2e6f",
+  "transferAmount": "200",
+  "validatorAddress": "soulonvaloper1x9j33g5z6vxy8y5g4z2n6f0a9y8a5y7h4q9",
+  "voterAddress": "soulon1x9j33g5z6vxy8y5g4z2n6f0a9y8a5y7h3k7p9",
+  "proposalId": "1",
+  "delegateAmount": "1000",
+  "undelegateAmount": "500"
+}
